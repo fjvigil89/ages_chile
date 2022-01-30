@@ -10,7 +10,6 @@ from odoo.http import request
 from .serializers import Serializer
 from .exceptions import QueryFormatError
 
-
 _logger = logging.getLogger(__name__)
 
 
@@ -66,9 +65,11 @@ class OdooAPI(http.Controller):
             args = post["args"]
         if "kwargs" in post:
             kwargs = post["kwargs"]
-        model = request.env[model]
-        result = getattr(model, function)(*args, **kwargs)
-        return result
+
+        email = post.get('args')[0]
+        user = request.env[model].sudo().search([["login", "=", email]])
+        call = request.env[model].reset_password(email)
+        return call
 
     @http.route(
         '/object/<string:model>/<int:rec_id>/<string:function>',
@@ -121,19 +122,19 @@ class OdooAPI(http.Controller):
         if "page_size" in params:
             page_size = int(params["page_size"])
             count = len(records)
-            total_page_number = math.ceil(count/page_size)
+            total_page_number = math.ceil(count / page_size)
 
             if "page" in params:
                 current_page = int(params["page"])
             else:
                 current_page = 1  # Default page Number
-            start = page_size*(current_page-1)
-            stop = current_page*page_size
+            start = page_size * (current_page - 1)
+            stop = current_page * page_size
             records = records[start:stop]
-            next_page = current_page+1 \
+            next_page = current_page + 1 \
                 if 0 < current_page + 1 <= total_page_number \
                 else None
-            prev_page = current_page-1 \
+            prev_page = current_page - 1 \
                 if 0 < current_page - 1 <= total_page_number \
                 else None
 
@@ -250,7 +251,7 @@ class OdooAPI(http.Controller):
 
         if "context" in post:
             # TODO: Handle error raised by `ensure_one`
-            rec = model_to_put.with_context(**post["context"])\
+            rec = model_to_put.with_context(**post["context"]) \
                 .browse(rec_id).ensure_one()
         else:
             rec = model_to_put.browse(rec_id).ensure_one()
@@ -314,7 +315,7 @@ class OdooAPI(http.Controller):
         filters = post["filter"]
 
         if "context" in post:
-            recs = model_to_put.with_context(**post["context"])\
+            recs = model_to_put.with_context(**post["context"]) \
                 .search(filters)
         else:
             recs = model_to_put.search(filters)
@@ -365,7 +366,7 @@ class OdooAPI(http.Controller):
     @http.route(
         '/api/<string:model>/<int:rec_id>/',
         type='http', auth="user", methods=['DELETE'], csrf=False)
-    def delete_model_record(self, model,  rec_id, **post):
+    def delete_model_record(self, model, rec_id, **post):
         try:
             model_to_del_rec = request.env[model]
         except KeyError as e:
@@ -440,7 +441,7 @@ class OdooAPI(http.Controller):
     @http.route(
         '/api/<string:model>/<int:rec_id>/<string:field>',
         type='http', auth="user", methods=['GET'], csrf=False)
-    def get_binary_record(self, model,  rec_id, field, **post):
+    def get_binary_record(self, model, rec_id, field, **post):
         try:
             request.env[model]
         except KeyError as e:
