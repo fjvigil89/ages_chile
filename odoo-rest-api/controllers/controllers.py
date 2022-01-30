@@ -227,9 +227,9 @@ class OdooAPI(http.Controller):
 
         if "context" in post:
             context = post["context"]
-            record = model_to_post.with_context(**context).create(data)
+            record = model_to_post.with_context(**context).sudo().create(data)
         else:
-            record = model_to_post.create(data)
+            record = model_to_post.sudo().create(data)
         return record.id
 
     # This is for single record update
