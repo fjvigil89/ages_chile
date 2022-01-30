@@ -1,0 +1,63 @@
+POST https://9999.geztion.pro/web/session/authenticate
+Accept: */*
+Cache-Control: no-cache
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+{     "jsonrpc": "2.0",     "method": "call",     "id": 1,     "params": {         "db": "9999",         "login": "jramonholy@gmail.com",         "password": "Maranatha.2021++"     } }
+
+<> 2022-01-22T073042.400.html
+
+###
+
+POST https://9999.geztion.pro/web/session/authenticate
+Accept: */*
+Cache-Control: no-cache
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+{     "jsonrpc": "2.0",     "method": "call",     "id": 1,     "params": {         "db": "9999",         "login": "jramonholy@gmail.com",         "password": "Maranatha.2021++"     } }
+
+<> 2022-01-22T071816.400.html
+
+###
+
+POST https://9999.geztion.pro/web/session/authenticate
+Accept: */*
+Cache-Control: no-cache
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+{     "jsonrpc": "2.0",     "method": "call",     "id": 1,     "params": {         "db": "9999",         "login": "jramonholy@gmail.com",         "password": "Maranatha.2021++"     } }
+
+<> 2022-01-22T071032.400.html
+
+###
+
+POST https://9999.geztion.pro/web/session/authenticate
+Accept: */*
+Cache-Control: no-cache
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+{     "jsonrpc": "2.0",     "method": "call",     "id": 1,     "params": {         "db": "9999",         "login": "jramonholy@gmail.com",         "password": "Maranatha.2021++"     } }
+
+###
+
+POST https://9999.geztion.pro/web/session/authenticate
+Accept: */*
+Cache-Control: no-cache
+User-Agent: Thunder Client (https://www.thunderclient.com)
+
+{     "jsonrpc": "2.0",     "method": "call",     "id": 1,     "params": {         "db": "9999",         "login": "jramonholy@gmail.com",         "password": "Maranatha.2021++"     } }
+
+###
+
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
