@@ -8,10 +8,13 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
                 <data>
+                    <field name="user_id" position="after">
+                        <field name="check_done" invisible="1"/>
+                    </field>
                     <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='quantity']"
                            position="after">
                         <field name="quantity_receive"/>
-                         <field name="check_done" invisible="1"/>
+                        <field name="check_done" invisible="1"/>
                     </xpath>
                 </data>
             </field>
