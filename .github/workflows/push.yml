@@ -10,15 +10,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-  
-    - uses: chaplyk/docker-compose-remote-action@v1.1
-      name: Stop Docker
-      with:
-        ssh_host: ${{ secrets.SERVER_HOST }}
-        ssh_user: ${{ secrets.SERVER_USERNAME }}
-        ssh_key: ${{ secrets.SSH_KEY }}
-        compose_file: docker-compose.yml
-        service: kill
 
     - name: SSH Server Deploy
       uses: kostya-ten/ssh-server-deploy@v4
@@ -32,21 +23,7 @@ jobs:
         scp_source: ./*
         scp_target: /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
         before_script: |
-          cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo ${{ secrets.SERVER_PASSWORD }} 
-          sudo -S -k docker-compose kill 
           rm -rf /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/*
         after_script: |
-          cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo ${{ secrets.SERVER_PASSWORD }} 
-          sudo -S -k docker-compose up -d
-    
-    - uses: chaplyk/docker-compose-remote-action@v1.1
-      name: Start Docker
-      with:
-        ssh_host: ${{ secrets.SERVER_HOST }}
-        ssh_user: ${{ secrets.SERVER_USERNAME }}
-        ssh_key: ${{ secrets.SSH_KEY }}
-        compose_file: docker-compose.yml
-        service: up
-        options: -d
+          ls
+          
