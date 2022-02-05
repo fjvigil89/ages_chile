@@ -24,10 +24,10 @@ jobs:
         scp_target: /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
         before_script: |
           cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo $PSW 
+          ${{ secrets.SERVER_PASSWORD }} 
           sudo -S -k docker-compose kill 
           rm -rf /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/*
         after_script: |
           cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo $PSW 
+          ${{ secrets.SERVER_PASSWORD }} 
           sudo -S -k docker-compose up -d
