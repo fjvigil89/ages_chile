@@ -14,7 +14,7 @@ jobs:
     - name: SSH Server Deploy
       uses: kostya-ten/ssh-server-deploy@v4
       env:
-        WOELCOME: "localhost"
+        PSW: ${{ secrets.SERVER_PASSWORD }}
       with:
         host: ${{ secrets.SERVER_HOST }}
         port: ${{ secrets.SERVER_PORT }}
@@ -24,10 +24,10 @@ jobs:
         scp_target: /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
         before_script: |
           cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo "${{ secrets.SERVER_PASSWORD }}" 
+          echo $PSW 
           sudo -S -k docker-compose kill 
           rm -rf /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/*
         after_script: |
           cd /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/
-          echo "${{ secrets.SERVER_PASSWORD }}" 
+          echo $PSW 
           sudo -S -k docker-compose up -d
