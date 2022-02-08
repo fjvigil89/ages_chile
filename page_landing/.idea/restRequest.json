@@ -1,9 +1,0 @@
-{
-  "uri": "https://9999.geztion.pro/web/session/authenticate",
-  "method": "POST",
-  "body": "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"call\",\n    \"id\": 1,\n    \"params\": {\n        \"db\": \"9999\",\n        \"login\": \"jramonholy@gmail.com\",\n        \"password\": \"Maranatha.2021++\"\n    }\n}",
-  "headers": {
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    "Content-Type": "application/json"
-  }
-}

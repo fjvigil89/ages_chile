@@ -21,7 +21,7 @@
     # always loaded
     'data': [
         # 'demo.xml',
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/templates.xml',
         'views/landing_view.xml',
     ],

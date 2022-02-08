@@ -1,80 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="action_page_landing" model="ir.actions.act_window">
-            <field name="name">Acceso de Usuarios TCM</field>
-            <field name="type">ir.actions.act_window</field>
+       <!--  <record id="action_page_landing" model="ir.actions.act_window">
+            <field name="name">Page Landing</field>
             <field name="res_model">landing.page</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" eval="False"/>
-            <field name="context">{}</field>
-            <field name="target">current</field>
-            <field name="help" type="html">
-               <p class="o_view_nocontent_smiling_face">
-                   Empiece aquí gestionando los accesos de <strong>Usuarios/Clientes de TCM</strong> y las instancias de Odoo.
-               </p>
-           </field>
         </record>
 
-        <!-- Vista TreeView de Usuarios del TCM -->
-        <record id="user_landing_list" model="ir.ui.view">
-            <field name="name">Acceso de Usuarios TCM</field>
-            <field name="model">landing.page</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <tree string="Listado de Usuarios TCM" create="true" edit="true" delete="true">
-                    <field name="user_id" string="Usuario"
-                           options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
-                    <field name="instance" string="Instancia de Odoo"/>
-                    <field name="url_website" string="Url de Acceso"
-                           attrs="{'readonly':True}"/>
-                    <field name="access_token" readonly="1" string="Token de Acceso"
-                           attrs="{'readonly':True, 'invisible': True}"/>
-                </tree>
-            </field>
-        </record>
-
-        <!-- Vista FormView de Usuarios del TCM -->
-        <record id="form_view_geztion_sale_order" model="ir.ui.view">
-            <field name="name">Clientes TCM</field>
+        <record id="user_landing_form" model="ir.ui.view">
+            <field name="name">Landing Page: form</field>
             <field name="model">landing.page</field>
             <field name="arch" type="xml">
-                <form string="Editar Orden de Compra" create='true' edit='true' delete='true'>
-                    <sheet>
-                        <div class="oe_title">
-                            <h2>
-                                <span class="o_horizontal_separator">Cliente/Usuario de TCM</span>
-                            </h2>
-                        </div>
-                        <group name="group_top">
-                            <field name="user_id" string="Usuario"
-                                   options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
-                            <field name="password" string="Contraseña" password="True" type="password"/>
-                            <field name="instance" string="Instancia de Odoo"/>
-                            <field name="url_website" string="Url de Acceso"
-                                   attrs="{'readonly':True}"/>
-                            <field name="access_token" readonly="1" string="Token de Acceso"
-                                   attrs="{'readonly':True, 'invisible': True}"/>
-                        </group>
-                    </sheet>
-                </form>
+            <form>
+                <sheet>
+                    <field name="instance" />
+                    <field name="loggedin" />
+                    <field name="access_token"/>
+                </sheet>
+            </form>
             </field>
+        </record> -->
+
+        <!-- <menuitem sequence="0" id="menu_landing" name="Landing Page"/>
+        <menuitem id="menu_landing_page" 
+                    parent="menu_landing"
+                    action="redirect_to_page"/> -->
+
+        <!-- <record model="ir.actions.act_url" id="act_landing_page">
+            <field name="type">ir.actions.act_url</field>
+            <field name="name">Reports</field>
+            <field name="url">/redirect_to_9999</field>
+            <field name="target">new</field>
         </record>
 
-        <menuitem id="root_menu_clientes_tcm"
-                  name="Clientes de TCM"/>
-
-        <menuitem id="menu_cliente_tcm"
-                  name="Gestión de Clientes"
-                  parent="root_menu_clientes_tcm"
-                  sequence="0"/>
-
-        <menuitem id="menu_geztion_clientes_tcm"
-                  name="Gestión de Clientes/Usuarios TCM"
-                  parent="menu_cliente_tcm"
-                  action="action_page_landing"
-                  sequence="0"/>
-
+        <menuitem name="Visitar" id="menu_reports" parent="menu_root" action="act_landing_page"/>    -->
     </data>
 </odoo>

@@ -1,82 +1,30 @@
 <odoo>
     <data>
         <record id="menu_partner_form" model="website.menu">
+            <!-- #here record id is the unique id of your record & model is the ‘website.menu’ of the website. -->
             <field name="name">Cliente 9999</field>
-            <field name="url">/web_redirect_odoo</field>
+            <!-- #here mention the name of the menu to appear. -->
+            <field name="url">/redirect_to_page</field>
+            <!-- #here mention the url of the website to be redirected after clicking. This is a controller. -->
             <field name="parent_id" ref="website.main_menu"/>
+            <!-- #here mention the parent id of the menu which we are inheriting. -->
             <field name="sequence" type="int">22</field>
             <field name="new_window" eval="True"></field>
         </record>
-
         <record id="menu_client_form" model="website.menu">
-            <field name="name">Odoo Directo</field>
-            <field name="url">/redirect_odoo</field>
+            <field name="name">Cliente Local</field>
+            <field name="url">/redirect_to_local</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">23</field>
             <field name="new_window" eval="True"></field>
         </record>
-
-        <template id="page_redirect_odoo">
-            <script type="text/javascript">
-
-                function setCookie(name,value,days) {
-                    var expires = "";
-                    if (days) {
-                        var date = new Date();
-                        date.setTime(date.getTime() + (days*24*60*60*1000));
-                        expires = "; expires=" + date.toUTCString();
-                        }
-                    document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=9999.geztion.pro";
-                    // "; path=" + path  +
-                    // "; domain=" + domain
-                }
-
-                console.log('Datos enviados desde el Controlador:');
-                var redirect_url = '<t t-esc="url"/>';
-                console.log('redirect_url', redirect_url);
-
-                var cookies = '<t t-esc="cookies"/>';
-                console.log('cookies', cookies);
-
-                var session_id = '<t t-esc="session_id"/>';
-                console.log('session_id', session_id);
-
-                console.log('Configuracion para el navegador!');
-
-                /* localhost:8069/web/login?db=db1, */
-
-                /* document.cookie = "session_id=" + encodeURIComponent( session_id) + "; frontend_lang=es_CL"; */
-                /* document.cookie = "testcookie=" + encodeURIComponent( cookievalue ) + "; expires=" + expiresdate.toUTCString(); */
-                /* document.cookie = "session_id=" + window.location.hash; */
-                /* document.cookie = "session_id=c7ab0e022866b7f5edfb0df044bdeea94bc84d12"; */
-
-                setCookie('session_id', encodeURIComponent( session_id), 30);
-
-                // document.cookie = "session_id=" + encodeURIComponent( session_id)
-                /* document.cookie = 'frontend_lang=es_CL'; */
-
-                console.log('cookie', document.cookie);
-                console.log('document', document);
-                console.log('url', redirect_url);
-
-                window.location.href = redirect_url;
-                // setCookie('session_id', encodeURIComponent( session_id), 30);
-
-            </script>
-        </template>
-
-        <!-- document.cookie = "session_id=" + window.location.hash;  -->
-
-        <template id="landing_page_odoo">
-            <title>Ejemplo de redirect</title>
-            <p>
-                <h1>Redirect to this page</h1>
-                <p>
-                    Hello<t t-esc="url"/>!
-                </p>
-                Hello<t t-esc="url"/>!
-            </p>
-        </template>
+        <record id="menu_client_xmlrpc" model="website.menu">
+            <field name="name">Cliente XMLRPC</field>
+            <field name="url">/redirect_xmlrpc</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">24</field>
+            <field name="new_window" eval="True"></field>
+        </record>
 
         <template id="get_db_list">
             <t t-call="website.layout">
@@ -87,9 +35,7 @@
                         <select name="db_selection" style="padding: 3px;">
                             <t t-foreach="selection_options" t-as="option">
                                 <t t-raw="option"/>
-                                <p>
-                                    <t t-esc="option"/>
-                                </p>
+                                <p><t t-esc="option"/></p>
                             </t>
                         </select>
                     </div>
@@ -97,5 +43,32 @@
             </t>
         </template>
 
+       <!--  <template id="index">
+            <title>Academy</title>
+            <t t-foreach="teachers" t-as="teacher">
+                <p>Nombre: <t t-esc="teacher"/></p>
+                <p><t t-esc="teacher.id"/>- <t t-esc="teacher.name"/></p>
+            </t>
+        </template> -->
+
+       <!--  <template id="listing">
+            <ul>
+                <li t-foreach="objects" t-as="object">
+                    <a t-attf-href="#{ root }/objects/#{ object.id }">
+                        <t t-esc="object.display_name"/>
+                    </a>
+                </li>
+            </ul>
+        </template> -->        
+
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
     </data>
 </odoo>
