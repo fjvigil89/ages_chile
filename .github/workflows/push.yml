@@ -22,8 +22,7 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         scp_source: ./*
         scp_target: /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
-        before_script: |
-          chmod -R 777 /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
+        before_script: |          
           rm -rf /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/*
         after_script: |
           ls
