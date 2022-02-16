@@ -18,6 +18,66 @@
             <field name="sequence" type="int">23</field>
             <field name="new_window" eval="True"></field>
         </record>
+<<<<<<< HEAD
+
+        <template id="page_redirect_odoo">
+            <script type="text/javascript">
+
+                function setCookie(name,value,days) {
+                    var expires = "";
+                    if (days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (days*24*60*60*1000));
+                        expires = "; expires=" + date.toUTCString();
+                        }
+                    document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=9999.geztion.pro";
+                    // "; path=" + path  +
+                    // "; domain=" + domain
+                }
+
+                console.log('Datos enviados desde el Controlador:');
+                var redirect_url = '<t t-esc="url"/>';
+                console.log('redirect_url', redirect_url);
+
+                var cookies = '<t t-esc="cookies"/>';
+                console.log('cookies', cookies);
+
+                var session_id = '<t t-esc="session_id"/>';
+                console.log('session_id', session_id);
+
+                console.log('Configuracion para el navegador!');
+
+                /* document.cookie = "session_id=" + encodeURIComponent( session_id) + "; frontend_lang=es_CL"; */
+                /* document.cookie = "testcookie=" + encodeURIComponent( cookievalue ) + "; expires=" + expiresdate.toUTCString(); */
+                /* document.cookie = "session_id=" + window.location.hash; */
+                /* document.cookie = "session_id=c7ab0e022866b7f5edfb0df044bdeea94bc84d12"; */
+
+                setCookie('session_id',encodeURIComponent( session_id), 30);
+
+                // document.cookie = "session_id=" + encodeURIComponent( session_id)
+                /* document.cookie = 'frontend_lang=es_CL'; */
+                console.log('cookie', document.cookie);
+                console.log('document', document);
+                console.log('url', redirect_url);
+
+                // window.location = redirect_url;
+
+            </script>
+        </template>
+
+        <!-- document.cookie = "session_id=" + window.location.hash;  -->
+
+        <template id="landing_page_odoo">
+            <title>Ejemplo de redirect</title>
+            <p>
+                <h1>Redirect to this page</h1>
+                <p>
+                    Hello<t t-esc="url"/>!
+                </p>
+                Hello<t t-esc="url"/>!
+            </p>
+        </template>
+=======
         <record id="menu_client_xmlrpc" model="website.menu">
             <field name="name">Cliente XMLRPC</field>
             <field name="url">/redirect_xmlrpc</field>
@@ -25,6 +85,7 @@
             <field name="sequence" type="int">24</field>
             <field name="new_window" eval="True"></field>
         </record>
+>>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
 
         <template id="get_db_list">
             <t t-call="website.layout">

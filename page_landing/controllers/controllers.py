@@ -3,11 +3,22 @@
 from odoo import http
 from odoo.http import request
 import requests
-from requests import Request,Session
+from requests import Request, Session
 import json as json
+<<<<<<< HEAD
+import werkzeug as werkzeug
+
+import logging
+
+from odoo.exceptions import except_orm
+
+logger = logging.getLogger(__name__)
+=======
 
 import xmlrpclib
 from openerp.exceptions import except_orm
+>>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
+
 
 class PageLanding(http.Controller):
     @http.route('/hello', auth='public')
@@ -28,9 +39,20 @@ class PageLanding(http.Controller):
             'selection_options': dbs
         })
 
+<<<<<<< HEAD
+    def read_password(self, uid):
+        # self.ensure_one()
+        request.env.cr.execute("SELECT password FROM res_users WHERE id=%s", (uid,))
+        pwd = request.env.cr.fetchall()
+        return pwd
+
+    @http.route('/web_redirect_odoo', type='http', auth='public', website=True)
+    def web_redirect_odoo(self, **kw):
+=======
     # http://192.168.56.101:8069/web?debug#action=91&active_id=mailbox_inbox&menu_id=74
     @http.route('/redirect_to_page', type='http', auth='public', website=True)
     def web_login_redirect(self, **kw):
+>>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
         user_id = http.request.env.context.get('uid')
         user = request.env['res.users'].search([('id', '=', user_id)])[0]
         print('Usuario: ', user)
@@ -152,6 +174,38 @@ class PageLanding(http.Controller):
                 'password': passwd,
             },
         }
+<<<<<<< HEAD
+
+        response = requests.get(redirect_url, cookies=cookies)
+        print('Response.headers: ', response.headers)
+        print('Response.request: ', response.request)
+        print('Response.cookies: ', response.cookies)
+        print('Response url: ', response.url)
+        # print(resp.text)
+        response.close()
+
+        werkzeug.http.dump_cookie('session_id', session_id, max_age=90 * 24 * 60 * 60, httponly=True)
+        # print(response.text)
+
+        # werkzeug.http.dump_cookie('session_id', session_id, max_age=90 * 24 * 60 * 60, expires=int(time.time()) + 3 * 3600, httponly=True)
+        # return werkzeug.utils.redirect(response.url)
+
+        values = {
+            'url': response.url,
+            'cookies': response.cookies,
+            'session_id': session_id
+        }
+        return request.render("page_landing.page_redirect_odoo", values)
+
+        # res = requests.get(b_url + "/your/controller/path", cookies={'session_id': str(session_id)})
+        # return http.redirect_with_hash('/web_redirect_odoo')
+
+    @http.route('/redirect_odoo', type='http', auth='public', website=True)
+    def page_redirect_odoo(self, **kw):
+        return http.request.render('page_landing.landing_page_odoo', {
+            'url': 'https://9999.geztion.pro/web'
+        })
+=======
         
         headers = {
             'Content-type': 'application/json'
@@ -201,3 +255,4 @@ class PageLanding(http.Controller):
             raise except_orm(_('Remote system access Issue \n '), _(e))
         print('******message*****',message)
         return uid, url, db, common, pwd
+>>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0

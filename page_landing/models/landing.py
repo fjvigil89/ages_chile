@@ -18,13 +18,18 @@ class LandingPage(models.Model):
     access_token = fields.Text(string='API Access Token', default=False)
     user_id = fields.Many2one('res.users', ondelete='set null', string='Usuario', default=lambda self: self.env.user)
 
-
     @api.multi
     @api.depends('instance')
     def _compute_website(self):        
         self.ensure_one()
         if self.instance:
+<<<<<<< HEAD
+            for record in self:
+                valuestr = record.instance + ".geztion.pro"
+                record.url_website = "https//localhost:8023"
+=======
             self.url_website = "https://" + self.instance + ".geztion.pro"
+>>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
 
     @api.multi
     def redirect_to_page(self):
