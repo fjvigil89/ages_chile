@@ -16,7 +16,8 @@ class Login(http.Controller):
         if db and db != request.db:
             raise Exception(_("Could not select database '%s'") % db)
         uid = request.session.authenticate(request.db, login, password)
-        url = '/web#%s' % url_encode({'action': action})
+
+        url = '/pos/web#%s' % url_encode({'action': action})
 
         return werkzeug.utils.redirect(url)
 

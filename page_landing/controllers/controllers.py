@@ -27,6 +27,7 @@ class PageLanding(http.Controller):
 
     @http.route('/redirect_odoo', type='http', auth='user', methods=['GET'], csrf=False)
     def page_redirect_odoo(self, **kw):
+        print("asdasdasd")
         user_id = http.request.env.context.get('uid')
         print('user_id: ', user_id)
 
@@ -45,12 +46,12 @@ class PageLanding(http.Controller):
 
         username = row_user.login
         password = user_tcm.password
-        database = user_tcm.instance
+        # database = user_tcm.instance
 
-        domain_url = "https://%s.geztion.pro" % user_tcm.instance
+        domain_url = "http://localhost:8023"
 
-        action='mail.action_discuss'
-        url = domain_url + '/login_odoo?db='+database+'&login='+username+'&password='+password+'&action='+action
+        action='pos.ui'
+        url = domain_url + '/login_odoo?db='+'tcm9999'+'&login='+username+'&password='+password+'&action='+action
 
         return werkzeug.utils.redirect(url)
 

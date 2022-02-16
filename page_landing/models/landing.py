@@ -27,7 +27,7 @@ class LandingPage(models.Model):
         if self.instance:
             for record in self:
                 valuestr = record.instance + ".geztion.pro"
-                record.url_website = "https://" + str(valuestr).strip()
+                record.url_website = "http://localhost:8023"
 
     @api.multi
     def redirect_to_page(self):
