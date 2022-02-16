@@ -1,34 +1,34 @@
 <odoo>
     <data>
         <record id="menu_partner_form" model="website.menu">
-            <field name="name">Cliente 9999</field>
-            <field name="url">/web_redirect_odoo</field>
+            <field name="name">Geztion Cliente</field>
+            <field name="url">/redirect_odoo</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">22</field>
             <field name="new_window" eval="True"></field>
         </record>
 
         <record id="menu_client_form" model="website.menu">
-            <field name="name">Odoo Directo</field>
-            <field name="url">/redirect_odoo</field>
+            <field name="name">POS Cliente</field>
+            <field name="url">/redirect_pos</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">23</field>
             <field name="new_window" eval="True"></field>
         </record>
 
-        <template id="page_redirect_odoo">
+        <!-- <template id="page_redirect_odoo">
             <script type="text/javascript">
 
                 function setCookie(name,value,days) {
-                var expires = "";
-                if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days*24*60*60*1000));
-                expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=9999.geztion.pro";
-                // "; path=" + path +
-                // "; domain=" + domain
+                    var expires = "";
+                    if (days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (days*24*60*60*1000));
+                        expires = "; expires=" + date.toUTCString();
+                        }
+                    document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=9999.geztion.pro";
+                    // "; path=" + path  +
+                    // "; domain=" + domain
                 }
 
                 console.log('Datos enviados desde el Controlador:');
@@ -43,26 +43,27 @@
 
                 console.log('Configuracion para el navegador!');
 
+                /* localhost:8069/web/login?db=db1, */
+
                 /* document.cookie = "session_id=" + encodeURIComponent( session_id) + "; frontend_lang=es_CL"; */
-                /* document.cookie = "testcookie=" + encodeURIComponent( cookievalue ) + "; expires=" +
-                expiresdate.toUTCString(); */
+                /* document.cookie = "testcookie=" + encodeURIComponent( cookievalue ) + "; expires=" + expiresdate.toUTCString(); */
                 /* document.cookie = "session_id=" + window.location.hash; */
                 /* document.cookie = "session_id=c7ab0e022866b7f5edfb0df044bdeea94bc84d12"; */
 
-                setCookie('session_id',encodeURIComponent( session_id), 30);
+                setCookie('session_id', encodeURIComponent( session_id), 30);
 
                 // document.cookie = "session_id=" + encodeURIComponent( session_id)
                 /* document.cookie = 'frontend_lang=es_CL'; */
+
                 console.log('cookie', document.cookie);
                 console.log('document', document);
                 console.log('url', redirect_url);
 
-                // window.location = redirect_url;
+                window.location.href = redirect_url;
+                setCookie('session_id', encodeURIComponent( session_id), 30);
 
             </script>
-        </template>
-
-        <!-- document.cookie = "session_id=" + window.location.hash;  -->
+        </template> -->
 
         <template id="landing_page_odoo">
             <title>Ejemplo de redirect</title>

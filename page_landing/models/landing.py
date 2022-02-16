@@ -20,13 +20,14 @@ class LandingPage(models.Model):
     is_logged = fields.Boolean(string='Autenticado?', default=False)
     access_token = fields.Text(string='API Access Token', default=False)
 
+
     @api.multi
     @api.depends('instance')
     def _compute_website(self):
         if self.instance:
             for record in self:
                 valuestr = record.instance + ".geztion.pro"
-                record.url_website = "https//localhost:8023"
+                record.url_website = "https://" + str(valuestr).strip()
 
     @api.multi
     def redirect_to_page(self):
