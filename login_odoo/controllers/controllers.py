@@ -22,11 +22,7 @@ class Login(http.Controller):
 
     @http.route('/login_pos', type='http', auth='none', methods=['GET'], csrf=False)
     def LoginPOS(self, login, password, action='mail.action_discuss', db=None, force='', mod_file=None, **kw):
-<<<<<<< HEAD
         # def _get_login_redirect_url(uid, redirect=None):
-=======
-    # def _get_login_redirect_url(uid, redirect=None):
->>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
 
         """ Decide if user requires a specific post-login redirect, e.g. for 2FA, or if they are
         fully logged and can proceed to the requested URL
@@ -36,23 +32,11 @@ class Login(http.Controller):
             if db and db != request.db:
                 raise Exception(_("Could not select database '%s'") % db)
             uid = request.session.authenticate(request.db, login, password)
-<<<<<<< HEAD
             # https://9999.geztion.pro/pos/web/#action=pos.ui
             url = '/pos/web/#%s' % url_encode({'action': action})
 
         return werkzeug.utils.redirect(url)
 
-=======
-            url = '/web#%s' % url_encode({'action': action})
-
-        return werkzeug.utils.redirect(url)
-
-        # I am trying to redirect from a website to a user cart in Odoo (The cart has products inside).
-        # The user is registered but not logged in. How to auto login thanks to POST URL? I already tried something as
-
-        # ip/web/login?db=pos-s99-01&login=mail@gmail.com&password = blabla&redirect=shop
-
->>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
         # if request.session.uid:  # fully logged
         #     user = request.env['res.users'].browse(uid)
         #     if user.pos_config_id and user.direct_login:
@@ -75,8 +59,4 @@ class Login(http.Controller):
         # qs['redirect'] = redirect
         # return parsed.replace(query=werkzeug.urls.url_encode(qs)).to_url()
 
-<<<<<<< HEAD
     # odoo.addons.web.controllers.main._get_login_redirect_url = _get_login_redirect_url
-=======
-    # odoo.addons.web.controllers.main._get_login_redirect_url = _get_login_redirect_url
->>>>>>> 809d7976956760fe1fb2753fc612210dea830aa0
