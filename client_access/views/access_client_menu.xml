@@ -16,15 +16,23 @@
                               method="post" onsubmit="this.action = this.action + location.hash">
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
-                            <div class="form-group field-db">
+                            <!--                            <div class="form-group field-db">-->
 
-                                <select class="form-control" name="db_selection">
-                                    <t t-foreach="selection_options" t-as="option">
-                                        <option t-attf-value="#{option}">
-                                            <t t-esc="option"/>
-                                        </option>
-                                    </t>
-                                </select>
+                            <!--                                <select class="form-control" name="db_selection">-->
+                            <!--                                    <t t-foreach="selection_options" t-as="option">-->
+                            <!--                                        <option t-attf-value="#{option}">-->
+                            <!--                                            <t t-esc="option"/>-->
+                            <!--                                        </option>-->
+                            <!--                                    </t>-->
+                            <!--                                </select>-->
+                            <!--                            </div>-->
+
+                            <div class="form-group field-login">
+                                <label for="login">RUT</label>
+                                <input type="text" placeholder="RUT" name="rut" t-att-value="rut" id="rut"
+                                       t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                       required="required"
+                                       autofocus="autofocus" autocapitalize="off"/>
                             </div>
 
                             <div class="form-group field-login">
