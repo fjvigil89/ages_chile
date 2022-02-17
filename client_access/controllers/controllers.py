@@ -35,7 +35,6 @@ class Controllers(http.Controller):
         username = kw.get('login')
         password = kw.get('password')
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(domain_url))
-        print(common)
         try:
             uid = common.authenticate('tc9999', username, password, {})
             pos_config = False
