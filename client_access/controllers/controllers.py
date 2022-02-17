@@ -29,7 +29,7 @@ class Controllers(http.Controller):
 
     @http.route('/web/login/access', type='http', auth="none", sitemap=False)
     def web_login(self, redirect=None, **kw):
-        domain_url = "http://localhost:8023"
+        domain_url = "http://155.210.153.12:10012"
         action = 'pos.ui'
         db = ''
         rut = kw.get('rut')
