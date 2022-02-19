@@ -29,13 +29,15 @@ class Controllers(http.Controller):
 
     @http.route('/web/login/access', type='http', auth="none", sitemap=False)
     def web_login(self, redirect=None, **kw):
-        domain_url = "http://155.210.153.12:10012"
+
         action = 'pos.ui'
         db = ''
+        domain_url = ''
         rut = kw.get('rut')
         distribution = request.env['user.distribution.database'].sudo().search([["name", "=", rut]])
         if distribution:
             db = distribution.database.strip()
+            domain_url = distribution.url_base.strip()
         else:
             pass
         # LANZAR ERROR SI NO HAY DB

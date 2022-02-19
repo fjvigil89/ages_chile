@@ -9,6 +9,14 @@
                 <form string="Distribuciones">
                     <sheet>
                         <group>
+                            <div class="oe_title">
+                                <label for="url_base"/>
+                                <h1>
+                                    <field name="url_base" required="1"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group>
                             <group>
                                 <field name="name" required="1"/>
                             </group>
