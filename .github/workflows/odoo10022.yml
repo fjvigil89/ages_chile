@@ -2,7 +2,7 @@ on:
   push:
     branches:
     - master
-name: deploy repo chile odoo10012
+name: deploy repo chile odoo10022
 jobs:
   deploy:
     name: deploy odoo12 addons
@@ -21,9 +21,9 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         scp_source: ./*
-        scp_target: /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/
+        scp_target: /home/fjvigil/web/docker/odoo/odoo2-12-docker-compose/addons/
         before_script: |          
-          rm -rf /home/fjvigil/web/docker/odoo/odoo-12-docker-compose/addons/*
+          rm -rf /home/fjvigil/web/docker/odoo/odoo2-12-docker-compose/addons/*
         after_script: |
           ls
           
