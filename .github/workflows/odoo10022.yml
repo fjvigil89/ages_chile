@@ -2,7 +2,7 @@ on:
   push:
     branches:
     - master
-name: deploy repo chile
+name: deploy repo chile odoo10022
 jobs:
   deploy:
     name: deploy odoo12 addons
