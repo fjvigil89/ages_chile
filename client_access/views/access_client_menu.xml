@@ -16,16 +16,6 @@
                               method="post" onsubmit="this.action = this.action + location.hash">
                             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
-                            <!--                            <div class="form-group field-db">-->
-
-                            <!--                                <select class="form-control" name="db_selection">-->
-                            <!--                                    <t t-foreach="selection_options" t-as="option">-->
-                            <!--                                        <option t-attf-value="#{option}">-->
-                            <!--                                            <t t-esc="option"/>-->
-                            <!--                                        </option>-->
-                            <!--                                    </t>-->
-                            <!--                                </select>-->
-                            <!--                            </div>-->
 
                             <div class="form-group field-login">
                                 <label for="login">RUT</label>
