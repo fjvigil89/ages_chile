@@ -1,0 +1,517 @@
+<odoo>
+    <data>
+        <record id="menu_data_form" model="website.menu">
+            <field name="name">Crear Cliente</field>
+            <field name="url">/customer/form</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">24</field>
+        </record>
+
+        <record id="menu_wizard_form" model="website.menu">
+            <field name="name">Asistente</field>
+            <field name="url">/wizard/platform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">25</field>
+            <field name="new_window" eval="True"></field>
+        </record>
+
+        <template id="tmp_customer_form" name="Partner Form">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container mt-3">
+                        <div class="col-md-6">
+                            <form action="/customer/form/submit">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" name="name" id="name" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address:</label>
+                                    <input type="email" class="form-control" name="email" id="email" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Phone:</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" required="true"/>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="tmp_customer_form_success" name="Customer Form Successfully Submitted">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container mt-3">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                Instancia de Odoo creada con exito.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+        <!-- inherit_id="website.assets_frontend"   -->
+        <!-- <xpath expr=".">
+                <script type="text/javascript"
+                        src="/website_anchor_smooth_scroll/static/src/js/website_anchor_smooth_scroll.js"/>
+            </xpath>
+        <template id="wizard_form" name="Wizard Form" inherit_id="website.assets_frontend">
+        -->
+        <template id="wizard_form" name="Wizard Form">
+
+            <t t-set="title">Asistente de Instancia Odoo</t>
+
+            <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+            <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+
+            <link rel="stylesheet" type="text/css" href="/odoo_instance/static/src/css/wizard.css"/>
+
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/index.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/util.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/alert.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/button.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/carousel.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/collapse.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/dropdown.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/modal.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/tooltip.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/popover.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/scrollspy.js"/>
+            <script type="text/javascript" src="/web/static/lib/bootstrap/js/tab.js"/>
+
+            <div id="wrap">
+                <div class="container mt-3">
+                    <div class="col-md-12">
+                        <form id="regForm" action="">
+
+                            <h1>Asistente:</h1>
+
+                            <!-- One "tab" for each step in the form: -->
+                            <div class="tab form-group row">Name:
+                                <p>
+                                    <input class="form-control" placeholder="First name..."
+                                           oninput="this.className = ''"/>
+                                </p>
+                                <p>
+                                    <input class="form-control" placeholder="Last name..."
+                                           oninput="this.className = ''"/>
+                                </p>
+                            </div>
+
+                            <div class="tab form-group row">Contact Info:
+                                <p>
+                                    <input class="form-control" placeholder="E-mail..." oninput="this.className = ''"/>
+                                </p>
+                                <p>
+                                    <input class="form-control" placeholder="Phone..." oninput="this.className = ''"/>
+                                </p>
+                            </div>
+
+                            <div class="tab form-group row">Birthday:
+                                <p>
+                                    <input class="form-control" placeholder="dd" oninput="this.className = ''"/>
+                                </p>
+                                <p>
+                                    <input class="form-control" placeholder="mm" oninput="this.className = ''"/>
+                                </p>
+                                <p>
+                                    <input class="form-control" placeholder="yyyy" oninput="this.className = ''"/>
+                                </p>
+                            </div>
+
+                            <div class="tab form-group row">Login Info:
+                                <p>
+                                    <input class="form-control" placeholder="Username..."
+                                           oninput="this.className = ''"/>
+                                </p>
+                                <p>
+                                    <input class="form-control" placeholder="Password..."
+                                           oninput="this.className = ''"/>
+                                </p>
+                            </div>
+
+                            <div style="overflow:auto;">
+                                <div style="float:right;">
+                                    <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">
+                                        Anterior
+                                    </button>
+                                    <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">
+                                        Siguiente
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Circles which indicates the steps of the form: -->
+                            <div style="text-align:center;margin-top:40px;">
+                                <span class="step"></span>
+                                <span class="step"></span>
+                                <span class="step"></span>
+                                <span class="step"></span>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="/odoo_instance/static/src/js/wizard.js"></script>
+        </template>
+
+        <template id="wizard_instance" name="Wizard Instance">
+            <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>
+            <link rel="stylesheet" type="text/css" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
+            <link rel="stylesheet" type="text/css" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
+            <link rel="stylesheet" type="text/css" href="/odoo_instance/static/src/css/wizard.css"/>
+
+            <section class="main-content">
+                <div class="container">
+                    <h1 class="text-center text-uppercase">Generador de Plataforma Cliente</h1>
+                    <div class="stepwizard">
+                        <div class="stepwizard-row setup-panel">
+                            <div class="stepwizard-step">
+                                <a href="#step-1"
+                                   role="button"
+                                   class="btn btn-primary btn-circle">1
+                                </a>
+                                <p>Paso 1</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a
+                                        href="#step-2"
+                                        role="button"
+                                        class="btn btn-default btn-circle disabled">2
+                                </a>
+                                <p>Paso 2</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a
+                                        href="#step-3"
+                                        role="button"
+                                        class="btn btn-default btn-circle disabled">3
+                                </a>
+                                <p>Paso 3</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a
+                                        href="#step-4"
+                                        role="button"
+                                        class="btn btn-default btn-circle disabled">4
+                                </a>
+                                <p>Paso 4</p>
+                            </div>
+                            <div class="stepwizard-step">
+                                <a
+                                        href="#step-5"
+                                        role="button"
+                                        class="btn btn-default btn-circle disabled">5
+                                </a>
+                                <p>Paso 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form role="form" action="/customer/form/submit" method="post">
+                        <div class="row setup-content" id="step-1">
+                            <div class="col-12">
+                                <div class="col-md-12">
+                                    <h3>Crear base de datos</h3>
+                                    <hr/>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-md-4 col-form-label">Nombre Base Datos</label>
+                                        <div class="col-md-8">
+                                            <input id="name" type="text" name="name" class="form-control"
+                                                   required="required"
+                                                   autocomplete="off" pattern="^[a-zA-Z0-9][a-zA-Z0-9_.-]+$"
+                                                   placeholder="Instancia-TCM"
+                                                   title="Solo se permiten caracteres alfanumericos, subrayados, y puntos."/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="login" class="col-md-4 col-form-label">Email</label>
+                                        <div class="col-md-8">
+                                            <input id="login" type="text" name="login" class="form-control"
+                                                   required="required"
+                                                   autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="password" class="col-md-4 col-form-label">Password</label>
+                                        <div class="col-md-8 input-group">
+                                            <input id="password" type="password" name="password" class="form-control"
+                                                   required="required" autocomplete="off"/>
+                                            <div class="input-group-append">
+                                                <span class="fa fa-eye o_little_eye input-group-text" aria-hidden="true"
+                                                      style="cursor: pointer;"></span>
+                                                <!--<span class="input-group-text" aria-hidden="true"-->
+                                                <!--style="cursor: pointer;">@-->
+                                                <!--</span>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="phone" class="col-md-4 col-form-label">Numero de Telefono</label>
+                                        <div class="col-md-8">
+                                            <input id="phone" type="number" name="phone" class="form-control"
+                                                   autocomplete="off" maxlength="100"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lang" class="col-md-4 col-form-label">Idioma</label>
+                                        <div class="col-md-8">
+                                            <select id="lang" name="lang" class="form-control" required="required"
+                                                    autocomplete="off">
+                                                <option value=""></option>
+                                                <t t-foreach="langs" t-as="lang">
+                                                    <option t-att-value="lang[0]">
+                                                        <t t-esc="lang[1]"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="country" class="col-md-4 col-form-label ">Pais</label>
+                                        <div class="col-md-8">
+                                            <select id="country" name="country_code" class="form-control"
+                                                    autocomplete="off" required="required">
+                                                <option value=""></option>
+                                                <t t-foreach="countries" t-as="country">
+                                                    <option t-att-value="country[0]">
+                                                        <t t-esc="country[1]"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="demo" class="col-md-4 col-form-label">Datos de ejemplo</label>
+                                        <div class="col-md-8">
+                                            <input type="checkbox" id="load_demo_checkbox" class="form-control-sm"
+                                                   name="demo" value="1"/>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-content" id="step-2">
+                            <div class="col-12">
+                                <div class="col-md-12">
+                                    <h3>Elige tu plan, podras agregar servicios mas adelante</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-md-3 col-lg-3 col-sm-3">
+                                            <label class="label-radio">
+                                                <input type="radio" name="product"
+                                                       selected="true" value="1"
+                                                       checked="1"
+                                                       class="card-input-element"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="circle1">
+                                                                <div class="circle2">
+                                                                    <v-img src="~@/assets/img/paperplane.svg"></v-img>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text--disabled text-uppercase text-h5 mt-2 text-center">
+                                                            Plan Basico
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="font-size: small">
+                                                        <div class="text-info blue--text">
+                                                            POS de Ventas con Codigo de Barra
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            Emision de Boleta Electronica
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            Emision y Recepcion de DTE:
+                                                            <ul>
+                                                                <li>Factura Electronica</li>
+                                                                <li>Notas de Credito y Debito</li>
+                                                            </ul>
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info text-h4 mt-6 blue--text">
+                                                            Gestion de Productos y precios
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info text-h4 mt-6 blue--text">
+                                                            Gestion de Proveedores y Clientes
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info h6 mt-6 text-black-50">
+                                                            UF 0,35 + IVA/mes
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-sm-3">
+                                            <label class="label-radio">
+                                                <input type="radio" name="product" class="card-input-element" value="2"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="circle1">
+                                                                <div class="circle2">
+                                                                    <v-img src="~@/assets/img/paperplane.svg"></v-img>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text--disabled text-uppercase text-h5 mt-2 text-center">
+                                                            Plan Inicial
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="font-size: small;">
+                                                        <div class="text-info blue--text">
+                                                            + Plan Basico
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            + Gestion de Inventario y Stock Critico
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            + Gestion de Compras y recepcion de mercaderias
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info h6 mt-6 text-black-50">UF 0,5 +
+                                                            IVA/mes
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-sm-3">
+                                            <label class="label-radio">
+                                                <input type="radio" name="product" class="card-input-element" value="3"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="circle1">
+                                                                <div class="circle2">
+                                                                    <v-img src="~@/assets/img/paperplane.svg"></v-img>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text--disabled text-uppercase text-h5 mt-2 text-center">
+                                                            Plan Creciente
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="font-size: small;">
+                                                        <div class="text-info blue--text">
+                                                            + Plan Inicial
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            + Contador externo (*)
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info h6 mt-6 text-black-50">
+                                                            UF 0,84 + IVA/mes
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-sm-3">
+                                            <label class="label-radio">
+                                                <input type="radio" name="product" class="card-input-element" value="4"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="circle1">
+                                                                <div class="circle2">
+                                                                    <v-img src="~@/assets/img/paperplane.svg"></v-img>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text--disabled text-uppercase text-h5 mt-2 text-center">
+                                                            Plan Consolidado
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body" style="font-size: small;">
+                                                        <div class="text-info blue--text">
+                                                            + Plan Inicial
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            + Servicio de Contabilidad
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info blue--text">
+                                                            + Gestion de Nomina de RRHH (hasta 5 empleados)
+                                                        </div>
+                                                        <hr class="my-2"/>
+                                                        <div class="text-info h6 mt-6 text-black-50">
+                                                            UF 2,5 + IVA/mes
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
+                                    <button class="btn btn-primary prevBtn float-right" type="button"
+                                            style="margin-right:5px;">Anterior
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-content" id="step-3">
+                            <div class="col-12">
+                                <div class="col-md-12">
+                                    <h3>Servicios Adicionales</h3>
+                                    <hr/>
+                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
+                                    <button class="btn btn-primary prevBtn float-right" type="button"
+                                            style="margin-right:5px;">Anterior
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-content" id="step-4">
+                            <div class="col-12">
+                                <div class="col-md-12">
+                                    <h3>Medios de Pago</h3>
+                                    <hr/>
+                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
+                                    <button class="btn btn-primary prevBtn float-right" type="button"
+                                            style="margin-right:5px;">Anterior
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-content" id="step-5">
+                            <div class="col-12">
+                                <div class="col-md-12">
+                                    <h3>Resumen del Servicio</h3>
+                                    <hr/>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <button class="btn btn-success float-right" type="submit">
+                                        Terminar!
+                                    </button>
+                                    <button class="btn btn-primary prevBtn float-right" type="button"
+                                            style="margin-right:5px;">Anterior
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"></script>
+            <script src="/odoo_instance/static/src/js/wizard.js"></script>
+        </template>
+
+    </data>
+</odoo>
