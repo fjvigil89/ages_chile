@@ -142,3 +142,85 @@ label-radio {
     color: #f4f7f5;
     z-index: -1;
 }
+
+/**
+  Default Markup for CheckBoxes Images
+**/
+
+.nameColumn {
+    width: 100px;
+    text-align: start;
+}
+
+.amountColumn {
+    width: 80px;
+}
+
+.imageColumn {
+    width: 55px;
+}
+
+.btn-shopping {
+    margin-right: 0.5rem !important;
+    font-size: 0.875rem;
+    line-height: 1;
+    font-weight: 400;
+    padding: .7rem 1.5rem;
+    border-radius: 0.1275rem
+}
+
+input[type="checkbox"][id^="myCheckbox"] {
+    display: none;
+}
+
+.label-check {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.label-check:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+.label-check img {
+    height: 100px;
+    width: 150px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+:checked + .label-check {
+    border-color: #ddd;
+}
+
+:checked + .label-check:before {
+    /*content: "✓";*/
+    content: "\2714";
+    color: white;
+    background-color: greenyellow;
+    transform: scale(1);
+}
+
+:checked + .label-check img {
+    transform: scale(0.9);
+    /*box-shadow: 0 0 5px #333;*/
+    z-index: -1;
+}

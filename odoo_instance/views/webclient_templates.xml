@@ -357,7 +357,8 @@
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-sm-3">
                                             <label class="label-radio">
-                                                <input type="radio" name="product" class="card-input-element" value="2"/>
+                                                <input type="radio" name="product" class="card-input-element"
+                                                       value="2"/>
                                                 <div class="card card-default card-input">
                                                     <div class="card-header">
                                                         <div class="flex-center">
@@ -393,7 +394,8 @@
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-sm-3">
                                             <label class="label-radio">
-                                                <input type="radio" name="product" class="card-input-element" value="3"/>
+                                                <input type="radio" name="product" class="card-input-element"
+                                                       value="3"/>
                                                 <div class="card card-default card-input">
                                                     <div class="card-header">
                                                         <div class="flex-center">
@@ -425,7 +427,8 @@
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-sm-3">
                                             <label class="label-radio">
-                                                <input type="radio" name="product" class="card-input-element" value="4"/>
+                                                <input type="radio" name="product" class="card-input-element"
+                                                       value="4"/>
                                                 <div class="card card-default card-input">
                                                     <div class="card-header">
                                                         <div class="flex-center">
@@ -472,6 +475,215 @@
                                 <div class="col-md-12">
                                     <h3>Servicios Adicionales</h3>
                                     <hr/>
+                                    <div class="container container-fluid">
+                                        <table cellpadding="1" cellspacing="1" width="100%">
+                                            <tr>
+                                                <td class="nameColumn text-info">
+                                                    POS
+                                                </td>
+                                                <td class="imageColumn">
+                                                    <input type="checkbox" id="myCheckbox1"/>
+                                                    <label class="label-check" for="myCheckbox1">
+                                                        <img src="/odoo_instance/static/images/pos_hardware_03.png"/>
+                                                    </label>
+                                                </td>
+                                                <td class="amountColumn pl-2">
+                                                    <input id="cant1"
+                                                           type="text"
+                                                           name="cant1"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           maxlength="100"/>
+                                                </td>
+                                                <td class="px-1">
+                                                    <span class="text-body">
+                                                        X 0,35 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button id="button1" type="button"
+                                                            class="btn btn-primary btn-icon-text btn-shopping">
+                                                        <i class="fa fa-shopping-cart btn-icon-prepend"></i>
+                                                        Aceptar
+                                                    </button>
+
+                                                </td>
+                                                <td>
+                                                    <span class="text-body">
+                                                        0,35 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <img height="48" width="48"
+                                                         src="/odoo_instance/static/images/shopping-cart-20396.png"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="nameColumn small text-info">
+                                                    Empleados Adicionales
+                                                </td>
+                                                <td class="imageColumn">
+                                                    <input type="checkbox" id="myCheckbox2"/>
+                                                    <label class="label-check" for="myCheckbox2">
+                                                        <img src="/odoo_instance/static/images/empleados.jpg"/>
+                                                    </label>
+                                                </td>
+                                                <td class="amountColumn pl-2">
+                                                    <input id="cant2"
+                                                           type="text"
+                                                           name="cant2"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           maxlength="100"/>
+                                                </td>
+                                                <td class="px-1">
+                                                    <span class="text-body">
+                                                        X 0,12 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button id="button2" type="button"
+                                                            class="btn btn-primary btn-icon-text btn-shopping">
+                                                        <i class="fa fa-shopping-cart btn-icon-prepend"></i>
+                                                        Aceptar
+                                                    </button>
+
+                                                </td>
+                                                <td>
+                                                    <span class="text-body">
+                                                        0,24 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <img height="48" width="48"
+                                                         src="/odoo_instance/static/images/shopping-cart-20396.png"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="nameColumn small text-info">
+                                                    E-Comerce
+                                                </td>
+                                                <td class="imageColumn">
+                                                    <input type="checkbox" id="myCheckbox3"/>
+                                                    <label class="label-check" for="myCheckbox3">
+                                                        <img src="/odoo_instance/static/images/e-commerce.jpg"/>
+                                                    </label>
+                                                </td>
+                                                <td class="amountColumn pl-2">
+                                                    <input id="cant3"
+                                                           type="text"
+                                                           name="cant3"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           maxlength="100"/>
+                                                </td>
+                                                <td class="px-1">
+                                                    <span class="text-body">
+                                                        X 1,2 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button id="button3" type="button"
+                                                            class="btn btn-primary btn-icon-text btn-shopping">
+                                                        <i class="fa fa-shopping-cart btn-icon-prepend"></i>
+                                                        Aceptar
+                                                    </button>
+
+                                                </td>
+                                                <td>
+                                                    <span class="text-body">
+                                                        1,2 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <img height="48" width="48"
+                                                         src="/odoo_instance/static/images/shopping-cart-20396.png"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="nameColumn small text-info">
+                                                    Gestion de Bodegas o salas de venta
+                                                </td>
+                                                <td class="imageColumn">
+                                                    <input type="checkbox" id="myCheckbox4"/>
+                                                    <label class="label-check" for="myCheckbox4">
+                                                        <img src="/odoo_instance/static/images/shopping.jpg"/>
+                                                    </label>
+                                                </td>
+                                                <td class="amountColumn pl-2">
+                                                    <input id="cant4"
+                                                           type="text"
+                                                           name="cant4"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           maxlength="100"/>
+                                                </td>
+                                                <td class="px-1">
+                                                    <span class="text-body">
+                                                        X 1,2 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button id="button4" type="button"
+                                                            class="btn btn-primary btn-icon-text btn-shopping">
+                                                        <i class="fa fa-shopping-cart btn-icon-prepend"></i>
+                                                        Aceptar
+                                                    </button>
+
+                                                </td>
+                                                <td>
+                                                    <span class="text-body">
+                                                        1,2 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <img height="48" width="48"
+                                                         src="/odoo_instance/static/images/shopping-cart-20396.png"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="nameColumn small text-info">
+                                                    Gestion de Bodegas o salas de venta adicional
+                                                </td>
+                                                <td class="imageColumn">
+                                                    <input type="checkbox" id="myCheckbox5"/>
+                                                    <label class="label-check" for="myCheckbox5">
+                                                        <img src="/odoo_instance/static/images/sh-rec.jpg"/>
+                                                    </label>
+                                                </td>
+                                                <td class="amountColumn pl-2">
+                                                    <input id="cant5"
+                                                           type="text"
+                                                           name="cant5"
+                                                           class="form-control"
+                                                           autocomplete="off"
+                                                           maxlength="100"/>
+                                                </td>
+                                                <td class="px-1">
+                                                    <span class="text-body">
+                                                        X 0,5 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <button id="button5" type="button"
+                                                            class="btn btn-primary btn-icon-text btn-shopping">
+                                                        <i class="fa fa-shopping-cart btn-icon-prepend"></i>
+                                                        Aceptar
+                                                    </button>
+
+                                                </td>
+                                                <td>
+                                                    <span class="text-body">
+                                                        0,5 UF + IVA/mes
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <img height="48" width="48"
+                                                         src="/odoo_instance/static/images/shopping-cart-20396.png"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                     <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
                                     <button class="btn btn-primary prevBtn float-right" type="button"
                                             style="margin-right:5px;">Anterior
@@ -482,8 +694,84 @@
                         <div class="row setup-content" id="step-4">
                             <div class="col-12">
                                 <div class="col-md-12">
-                                    <h3>Medios de Pago</h3>
+                                    <h3>Medio de Pago</h3>
                                     <hr/>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <label>
+                                                <input type="radio" name="paymethod"
+                                                       selected="true" value="1"
+                                                       checked="1"
+                                                       class="card-input-element"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="flex-center">
+                                                                <img width="100%" height="100px"
+                                                                     src="/odoo_instance/static/images/webpay.png"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <label>
+                                                <input type="radio" name="paymethod" value="2" class="card-input-element"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="flex-center">
+                                                                <img width="100%" height="100px"
+                                                                     src="/odoo_instance/static/images/khipu-oficial.png"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <label>
+                                                <input type="radio" name="paymethod" value="3" class="card-input-element"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <div class="flex-center">
+                                                                <img width="100%" height="100px"
+                                                                     src="/odoo_instance/static/images/pagofacil-max-heigh-100-C9.png"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <label>
+                                                <input type="radio" name="paymethod" value="4" class="card-input-element"/>
+                                                <div class="card card-default card-input">
+                                                    <div class="card-header">
+                                                        <div class="flex-center">
+                                                            <img width="100%" height="100px"
+                                                                 src="/odoo_instance/static/images/wflow.png"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col-10">
+                                            <span class="h2">
+                                                Durante los tres primeros meses no te cobraremos nada!!
+                                            </span>
+                                            <br/>
+                                            <span class="h4">
+                                                Debes definir un medio de pago con saldo de al menos
+                                                $ 1.000, no te cobraremos nada, solo probaberemos que
+                                                tu medio de pago existe.
+                                            </span>
+                                        </div>
+                                    </div>
                                     <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
                                     <button class="btn btn-primary prevBtn float-right" type="button"
                                             style="margin-right:5px;">Anterior

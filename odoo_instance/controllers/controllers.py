@@ -41,6 +41,8 @@ class PartnerForm(http.Controller):
         print('Idioma: ', post.get('lang'))
         print('Pais: ', post.get('country_code'))
         print('Plan: ', post.get('product'))
+        print('Metodo de Pago: ', post.get('paymethod'))
+
         # partner = request.env['res.partner'].create({
         #     'name': post.get('name'),
         #     'email': post.get('email'),
