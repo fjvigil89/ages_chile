@@ -1,168 +1,22 @@
 <odoo>
     <data>
-        <record id="menu_data_form" model="website.menu">
-            <field name="name">Crear Cliente</field>
-            <field name="url">/customer/form</field>
+        <record id="menu_wizard_form" model="website.menu">
+            <field name="name">Generar Plataforma</field>
+            <field name="url">instance/launch/wizard</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">24</field>
+            <field name="new_window" eval="True"></field>
         </record>
 
-        <record id="menu_wizard_form" model="website.menu">
-            <field name="name">Asistente</field>
-            <field name="url">/wizard/platform</field>
+        <record id="menu_wizard_instance" model="website.menu">
+            <field name="name">Base Datos</field>
+            <field name="url">/instance/database/example</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">25</field>
             <field name="new_window" eval="True"></field>
         </record>
 
-        <template id="tmp_customer_form" name="Partner Form">
-            <t t-call="website.layout">
-                <div id="wrap">
-                    <div class="container mt-3">
-                        <div class="col-md-6">
-                            <form action="/customer/form/submit">
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" name="name" id="name" required="true"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email address:</label>
-                                    <input type="email" class="form-control" name="email" id="email" required="true"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Phone:</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" required="true"/>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </t>
-        </template>
-
-        <template id="tmp_customer_form_success" name="Customer Form Successfully Submitted">
-            <t t-call="website.layout">
-                <div id="wrap">
-                    <div class="container mt-3">
-                        <div class="col-md-12">
-                            <div class="alert alert-success">
-                                Instancia de Odoo creada con exito.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </t>
-        </template>
-
-
-        <!-- inherit_id="website.assets_frontend"   -->
-        <!-- <xpath expr=".">
-                <script type="text/javascript"
-                        src="/website_anchor_smooth_scroll/static/src/js/website_anchor_smooth_scroll.js"/>
-            </xpath>
-        <template id="wizard_form" name="Wizard Form" inherit_id="website.assets_frontend">
-        -->
-        <template id="wizard_form" name="Wizard Form">
-
-            <t t-set="title">Asistente de Instancia Odoo</t>
-
-            <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
-            <link rel="stylesheet" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
-
-            <link rel="stylesheet" type="text/css" href="/odoo_instance/static/src/css/wizard.css"/>
-
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/index.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/util.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/alert.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/button.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/carousel.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/collapse.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/dropdown.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/modal.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/tooltip.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/popover.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/scrollspy.js"/>
-            <script type="text/javascript" src="/web/static/lib/bootstrap/js/tab.js"/>
-
-            <div id="wrap">
-                <div class="container mt-3">
-                    <div class="col-md-12">
-                        <form id="regForm" action="">
-
-                            <h1>Asistente:</h1>
-
-                            <!-- One "tab" for each step in the form: -->
-                            <div class="tab form-group row">Name:
-                                <p>
-                                    <input class="form-control" placeholder="First name..."
-                                           oninput="this.className = ''"/>
-                                </p>
-                                <p>
-                                    <input class="form-control" placeholder="Last name..."
-                                           oninput="this.className = ''"/>
-                                </p>
-                            </div>
-
-                            <div class="tab form-group row">Contact Info:
-                                <p>
-                                    <input class="form-control" placeholder="E-mail..." oninput="this.className = ''"/>
-                                </p>
-                                <p>
-                                    <input class="form-control" placeholder="Phone..." oninput="this.className = ''"/>
-                                </p>
-                            </div>
-
-                            <div class="tab form-group row">Birthday:
-                                <p>
-                                    <input class="form-control" placeholder="dd" oninput="this.className = ''"/>
-                                </p>
-                                <p>
-                                    <input class="form-control" placeholder="mm" oninput="this.className = ''"/>
-                                </p>
-                                <p>
-                                    <input class="form-control" placeholder="yyyy" oninput="this.className = ''"/>
-                                </p>
-                            </div>
-
-                            <div class="tab form-group row">Login Info:
-                                <p>
-                                    <input class="form-control" placeholder="Username..."
-                                           oninput="this.className = ''"/>
-                                </p>
-                                <p>
-                                    <input class="form-control" placeholder="Password..."
-                                           oninput="this.className = ''"/>
-                                </p>
-                            </div>
-
-                            <div style="overflow:auto;">
-                                <div style="float:right;">
-                                    <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">
-                                        Anterior
-                                    </button>
-                                    <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">
-                                        Siguiente
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Circles which indicates the steps of the form: -->
-                            <div style="text-align:center;margin-top:40px;">
-                                <span class="step"></span>
-                                <span class="step"></span>
-                                <span class="step"></span>
-                                <span class="step"></span>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript" src="/odoo_instance/static/src/js/wizard.js"></script>
-        </template>
-
-        <template id="wizard_instance" name="Wizard Instance">
+        <template id="wizard_instance" name="Asistente de Instancia Odoo">
             <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>
             <link rel="stylesheet" type="text/css" href="/web/static/lib/fontawesome/css/font-awesome.css"/>
             <link rel="stylesheet" type="text/css" href="/web/static/lib/bootstrap/css/bootstrap.css"/>
@@ -170,7 +24,7 @@
 
             <section class="main-content">
                 <div class="container">
-                    <h1 class="text-center text-uppercase">Generador de Plataforma Cliente</h1>
+                    <h1 class="text-center text-uppercase">Generador de Plataforma Cliente TCM</h1>
                     <div class="stepwizard">
                         <div class="stepwizard-row setup-panel">
                             <div class="stepwizard-step">
@@ -214,20 +68,34 @@
                             </div>
                         </div>
                     </div>
-                    <form role="form" action="/customer/form/submit" method="post">
+                    <form role="form" action="/instance/database/create" method="post">
                         <div class="row setup-content" id="step-1">
                             <div class="col-12">
                                 <div class="col-md-12">
-                                    <h3>Crear base de datos</h3>
+                                    <h3>Crear Base de Datos</h3>
                                     <hr/>
+                                    <div class="form-group row">
+                                        <t t-if="insecure==true">
+                                            <input type="hidden" name="master_pwd" class="form-control" value="admin"/>
+                                        </t>
+                                        <t t-else="">
+                                            <label for="master_pwd" class="col-md-4 col-form-label">Contraseña Maestra</label>
+                                            <div class="col-md-8">
+                                                <input id="master_pwd" type="password" name="master_pwd"
+                                                       class="form-control"
+                                                       required="required" autofocus="autofocus"/>
+                                            </div>
+                                        </t>
+                                    </div>
                                     <div class="form-group row">
                                         <label for="name" class="col-md-4 col-form-label">Nombre Base Datos</label>
                                         <div class="col-md-8">
-                                            <input id="name" type="text" name="name" class="form-control"
+                                            <input id="name" type="text" name="name"
+                                                   class="form-control"
                                                    required="required"
                                                    autocomplete="off" pattern="^[a-zA-Z0-9][a-zA-Z0-9_.-]+$"
-                                                   placeholder="Instancia-TCM"
-                                                   title="Solo se permiten caracteres alfanumericos, subrayados, y puntos."/>
+                                                   placeholder="InstanciaTCM"
+                                                   title="Solo se permiten carácteres alfanuméricos, subrayados, y puntos."/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -239,21 +107,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="password" class="col-md-4 col-form-label">Password</label>
+                                        <label for="password" class="col-md-4 col-form-label">Contraseña</label>
                                         <div class="col-md-8 input-group">
                                             <input id="password" type="password" name="password" class="form-control"
                                                    required="required" autocomplete="off"/>
                                             <div class="input-group-append">
                                                 <span class="fa fa-eye o_little_eye input-group-text" aria-hidden="true"
-                                                      style="cursor: pointer;"></span>
-                                                <!--<span class="input-group-text" aria-hidden="true"-->
-                                                <!--style="cursor: pointer;">@-->
-                                                <!--</span>-->
+                                                      style="cursor: pointer;"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="phone" class="col-md-4 col-form-label">Numero de Telefono</label>
+                                        <label for="phone" class="col-md-4 col-form-label">Número de Teléfono</label>
                                         <div class="col-md-8">
                                             <input id="phone" type="number" name="phone" class="form-control"
                                                    autocomplete="off" maxlength="100"/>
@@ -274,7 +139,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="country" class="col-md-4 col-form-label ">Pais</label>
+                                        <label for="country" class="col-md-4 col-form-label ">País</label>
                                         <div class="col-md-8">
                                             <select id="country" name="country_code" class="form-control"
                                                     autocomplete="off" required="required">
@@ -291,7 +156,7 @@
                                         <label for="demo" class="col-md-4 col-form-label">Datos de ejemplo</label>
                                         <div class="col-md-8">
                                             <input type="checkbox" id="load_demo_checkbox" class="form-control-sm"
-                                                   name="demo" value="1"/>
+                                                   name="demo" value="0" checked="0"/>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
@@ -301,7 +166,7 @@
                         <div class="row setup-content" id="step-2">
                             <div class="col-12">
                                 <div class="col-md-12">
-                                    <h3>Elige tu plan, podras agregar servicios mas adelante</h3>
+                                    <h3>Elige tu plan, podras agregar servicios más adelante</h3>
                                     <hr/>
                                     <div class="row">
                                         <div class="col-md-3 col-lg-3 col-sm-3">
@@ -320,32 +185,32 @@
                                                             </div>
                                                         </div>
                                                         <div class="text--disabled text-uppercase text-h5 mt-2 text-center">
-                                                            Plan Basico
+                                                            Plan Básico
                                                         </div>
                                                     </div>
                                                     <div class="card-body" style="font-size: small">
                                                         <div class="text-info blue--text">
-                                                            POS de Ventas con Codigo de Barra
+                                                            POS de Ventas con Código de Barra
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info blue--text">
-                                                            Emision de Boleta Electronica
+                                                            Emisión de Boleta Electrónica
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info blue--text">
-                                                            Emision y Recepcion de DTE:
+                                                            Emisión y Recepción de DTE:
                                                             <ul>
-                                                                <li>Factura Electronica</li>
-                                                                <li>Notas de Credito y Debito</li>
+                                                                <li>Factura Electrónica</li>
+                                                                <li>Notas de Crédito y Débito</li>
                                                             </ul>
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info text-h4 mt-6 blue--text">
-                                                            Gestion de Productos y precios
+                                                            Gestión de Productos y precios
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info text-h4 mt-6 blue--text">
-                                                            Gestion de Proveedores y Clientes
+                                                            Gestión de Proveedores y Clientes
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info h6 mt-6 text-black-50">
@@ -374,15 +239,15 @@
                                                     </div>
                                                     <div class="card-body" style="font-size: small;">
                                                         <div class="text-info blue--text">
-                                                            + Plan Basico
+                                                            + Plan Básico
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info blue--text">
-                                                            + Gestion de Inventario y Stock Critico
+                                                            + Gestión de Inventario y Stock Crítico
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info blue--text">
-                                                            + Gestion de Compras y recepcion de mercaderias
+                                                            + Gestión de Compras y recepción de mercaderías
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info h6 mt-6 text-black-50">UF 0,5 +
@@ -452,7 +317,7 @@
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info blue--text">
-                                                            + Gestion de Nomina de RRHH (hasta 5 empleados)
+                                                            + Gestión de Nómina de RRHH (hasta 5 empleados)
                                                         </div>
                                                         <hr class="my-2"/>
                                                         <div class="text-info h6 mt-6 text-black-50">
@@ -602,7 +467,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="nameColumn small text-info">
-                                                    Gestion de Bodegas o salas de venta
+                                                    Gestión de Bodegas o salas de venta
                                                 </td>
                                                 <td class="imageColumn">
                                                     <input type="checkbox" id="myCheckbox4"/>
@@ -643,7 +508,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="nameColumn small text-info">
-                                                    Gestion de Bodegas o salas de venta adicional
+                                                    Gestión de Bodegas o salas de venta adicional
                                                 </td>
                                                 <td class="imageColumn">
                                                     <input type="checkbox" id="myCheckbox5"/>
@@ -696,80 +561,85 @@
                                 <div class="col-md-12">
                                     <h3>Medio de Pago</h3>
                                     <hr/>
-                                    <div class="row">
-                                        <div class="col-md-6 col-lg-6 col-sm-6">
-                                            <label>
-                                                <input type="radio" name="paymethod"
-                                                       selected="true" value="1"
-                                                       checked="1"
-                                                       class="card-input-element"/>
-                                                <div class="card card-default card-input">
-                                                    <div class="card-header">
-                                                        <div class="flex-center">
+                                    <div class="container container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-sm-6">
+                                                <label>
+                                                    <input type="radio" name="paymethod"
+                                                           selected="true" value="1"
+                                                           checked="1"
+                                                           class="card-input-element"/>
+                                                    <div class="card card-default card-input">
+                                                        <div class="card-header">
                                                             <div class="flex-center">
-                                                                <img width="100%" height="100px"
-                                                                     src="/odoo_instance/static/images/webpay.png"/>
+                                                                <div class="flex-center">
+                                                                    <img width="100%" height="100px"
+                                                                         src="/odoo_instance/static/images/webpay.png"/>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 col-sm-6">
-                                            <label>
-                                                <input type="radio" name="paymethod" value="2" class="card-input-element"/>
-                                                <div class="card card-default card-input">
-                                                    <div class="card-header">
-                                                        <div class="flex-center">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 col-sm-6">
+                                                <label>
+                                                    <input type="radio" name="paymethod" value="2"
+                                                           class="card-input-element"/>
+                                                    <div class="card card-default card-input">
+                                                        <div class="card-header">
                                                             <div class="flex-center">
-                                                                <img width="100%" height="100px"
-                                                                     src="/odoo_instance/static/images/khipu-oficial.png"/>
+                                                                <div class="flex-center">
+                                                                    <img width="100%" height="100px"
+                                                                         src="/odoo_instance/static/images/khipu-oficial.png"/>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 col-sm-6">
-                                            <label>
-                                                <input type="radio" name="paymethod" value="3" class="card-input-element"/>
-                                                <div class="card card-default card-input">
-                                                    <div class="card-header">
-                                                        <div class="flex-center">
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 col-sm-6">
+                                                <label>
+                                                    <input type="radio" name="paymethod" value="3"
+                                                           class="card-input-element"/>
+                                                    <div class="card card-default card-input">
+                                                        <div class="card-header">
                                                             <div class="flex-center">
-                                                                <img width="100%" height="100px"
-                                                                     src="/odoo_instance/static/images/pagofacil-max-heigh-100-C9.png"/>
+                                                                <div class="flex-center">
+                                                                    <img width="100%" height="100px"
+                                                                         src="/odoo_instance/static/images/pagofacil-max-heigh-100-C9.png"/>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6 col-lg-6 col-sm-6">
-                                            <label>
-                                                <input type="radio" name="paymethod" value="4" class="card-input-element"/>
-                                                <div class="card card-default card-input">
-                                                    <div class="card-header">
-                                                        <div class="flex-center">
-                                                            <img width="100%" height="100px"
-                                                                 src="/odoo_instance/static/images/wflow.png"/>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 col-sm-6">
+                                                <label>
+                                                    <input type="radio" name="paymethod" value="4"
+                                                           class="card-input-element"/>
+                                                    <div class="card card-default card-input">
+                                                        <div class="card-header">
+                                                            <div class="flex-center">
+                                                                <img width="100%" height="100px"
+                                                                     src="/odoo_instance/static/images/wflow.png"/>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </label>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row pt-3">
-                                        <div class="col-10">
-                                            <span class="h2">
-                                                Durante los tres primeros meses no te cobraremos nada!!
-                                            </span>
-                                            <br/>
-                                            <span class="h4">
-                                                Debes definir un medio de pago con saldo de al menos
-                                                $ 1.000, no te cobraremos nada, solo probaberemos que
-                                                tu medio de pago existe.
-                                            </span>
+                                        <div class="row pt-3">
+                                            <div class="col-10">
+                                                <span class="h2">
+                                                    Durante los tres primeros meses no te cobraremos nada!!
+                                                </span>
+                                                <br/>
+                                                <span class="h4">
+                                                    Debes definir un medio de pago con saldo de al menos
+                                                    $ 1.000, no te cobraremos nada, solo probaberemos que
+                                                    tu medio de pago existe.
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
@@ -782,7 +652,7 @@
                         <div class="row setup-content" id="step-5">
                             <div class="col-12">
                                 <div class="col-md-12">
-                                    <h3>Resumen del Servicio</h3>
+                                    <h3>Resúmen del Servicio</h3>
                                     <hr/>
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <button class="btn btn-success float-right" type="submit">
@@ -799,6 +669,31 @@
             </section>
             <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"></script>
             <script src="/odoo_instance/static/src/js/wizard.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                    // Little eye
+                    $('body').on('mousedown mouseup', '.o_little_eye', function (ev) {
+                    $(ev.target).closest('.input-group').find('.form-control').prop('type', ev.type === 'mousedown' ? 'text'
+                    : 'password');
+                    });
+                });
+            </script>
+        </template>
+
+        <template id="report_creating_process" name="Instancia ">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container mt-5">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                <h4>Proceso de creación de la instancia de Odoo terminado!</h4>
+                                <br/>
+                                <t t-esc="message"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
         </template>
 
     </data>
