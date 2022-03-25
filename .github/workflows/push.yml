@@ -32,17 +32,6 @@ jobs:
           echo ${{ secrets.SERVER_PASSWORD }} 
           sudo -S -k docker-compose restart
 
-    - name: Post to a Slack channel
-      id: slack
-      uses: slackapi/slack-github-action@v1.18.0
-      with:
-        # Slack channel id, channel name, or user id to post message.
-        # See also: https://api.slack.com/methods/chat.postMessage#channels
-        channel-id: 'https://api.slack.com/methods/chat.postMessage#C0312JA9JLE'
-        # For posting a simple plain text message
-        slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
 
 
