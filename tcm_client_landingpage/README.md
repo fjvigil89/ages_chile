@@ -1,17 +1,17 @@
-#Módulo: TCM Client Landing Page
+# Módulo: TCM Client Landing Page
 
-##Descripción
+## Descripción
 Este módulo es el encargado de redireccionar y/o navegar hacia de forma directa hacia los clientes 
 desde el portal principal TCM.
 
-##Instalación del módulo
+## Instalación del módulo
 Para la instalación del módulo se debe iniciar como usuario administrador desde el portal pricipal TCM
 y luego acceder a la vistas de aplicaciones y en la barra de filtros escribir el texto TCM y seguidamente 
 seleccionar el modulo con el nombre **TCM Client Landing Page** y luego hacer click en instalar.
 
 ![Image text](static/description//images/odoo_apps.png)
 
-##Como usar este módulo
+## Como usar este módulo
 Para utilizar esta característica, debemos ir hacia el menu de aplicaciones del Odoo12 y seleccionar
 la opción _**Clientes de TCM**_ y aparecerá la lista de los clientes del portal principal.
 
@@ -26,7 +26,7 @@ se muestra arriba y seguidamente se abre el formulario de edición para modifica
 
 ![Image text](static/description/images/cliente_tcm_configure.png)
 
-####Como navegar de forma directa hacia los clientes desde el portal.
+#### Como navegar de forma directa hacia los clientes desde el portal.
 
 * Primero: Los usuarios deben de haber sido agregados por un administrador en el módulo de gestión de usuarios 
 del portal TCM.
@@ -42,10 +42,10 @@ descrito anteriormente en el formulario de clientes de TCM, este debe de loguear
 ![Image text](static/description/images/tcm_identificarse.png)
  
  
- ###Tecnologías empleadas
+### Tecnologías empleadas
 
 * [Odoo](https://www.odoo.com): Version 12
 
-###Autor
+### Autor
 Jose Ramón Vidal Wilson
-- [Email: jramonholy@gmail.com](mailto:jramonholy@gmail.com?subject=Hi% "Hi!") 
+- [Email: jramonholy@gmail.com](mailto:jramonholy@gmail.com?subject=Hi% "Hi!")

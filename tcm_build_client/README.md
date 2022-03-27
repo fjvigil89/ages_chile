@@ -1,4 +1,4 @@
-#Módulo: TCM Build Client
+# Módulo: TCM Build Client
 
 ## Descripción
 Construye una nueva instancia para un cliente de TCM desde el portal principal TCM.
@@ -13,14 +13,14 @@ En la consola como administrador teclear el comando:
 
 y luego dar ENTER para instalar esta librería que es una dependencia de este módulo.
 
-##Instalación del módulo
+## Instalación del módulo
 Para la instalación del módulo se debe iniciar como usuario administrador desde el portal pricipal TCM
 y luego acceder a la vistas de aplicaciones y en la barra de filtros escribir el texto TCM y seguidamente 
 seleccionar el módulo con el nombre **TCM Build Client** y luego hacer click en instalar.
 
 ![Image text](static/description/images/odoo_apps.png)
 
-##Como usar este módulo
+## Como usar este módulo
 
 Lo primero es acceder desde el portal principal logueado como administrador es hacer click en la 
 opción que dice **CREAR NUEVO CLIENTE** como la imagen que se muestra debajo.
@@ -62,6 +62,6 @@ para levantar la instancia del cliente.
 
 * [Odoo](https://www.odoo.com): Version 12
 
-###Autor
+### Autor
 Jose Ramón Vidal Wilson
 - [Email: jramonholy@gmail.com](mailto:jramonholy@gmail.com?subject=Hi% "Hi!") 

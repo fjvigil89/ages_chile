@@ -37,6 +37,6 @@ en el fichero readme.md contenida en la carpeta de cada módulo.*
 ![Image text](resources/uml_diagram.png) 
 
 
-###Autor
+### Autor
 Jose Ramón Vidal Wilson
 - [Email: jramonholy@gmail.com](mailto:jramonholy@gmail.com?subject=Hi% "Hi!")
