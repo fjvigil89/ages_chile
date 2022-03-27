@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_user_distribution,client_access.user.distribution.database,model_user_distribution_database,,1,1,1,1

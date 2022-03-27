@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="menu_partner_form" model="website.menu">
+            <field name="name">Acceso Cliente</field>
+            <field name="url">/redirect_client_tcm</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">23</field>
+            <field name="new_window" eval="True"></field>
+        </record>
+
+        <record id="menu_client_form" model="website.menu">
+            <field name="name">POS Cliente</field>
+            <field name="url">/redirect_client_pos</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">24</field>
+            <field name="new_window" eval="True"></field>
+        </record>
+    </data>
+</odoo>
