@@ -79,21 +79,22 @@ class TCMPlatformWizard(http.Controller):
             # print(error)
 
         # Instalando los modulos necesarios
-        self.install_odoo_modules()
+        self.install_odoo_modules(SERVER, DATABASE, LOGIN, USER_PASSWORD)
         print("Modulos instalados con exito!")
 
         return request.render("tcm_build_client.build_client_wizard_report", status)
         # Finished!
 
-    def install_odoo_modules(self):
+    def install_odoo_modules(self, serverName, database, login, password):
         # You can use this client if you have Erppeek installed and have a erppeek.ini file
         # client = erppeek.Client.from_config('ErpPeekDemoDatabase')
         # The alternative is by specifying the settings by command
-        client = erppeek.Client('http://localhost:8069', '4444', 'chichomentira@tcm.com', 'desarrollo')
+        client = erppeek.Client(serverName, database, login, password)
         print('Instalando los modulos...')
-        modules = client.modules('point_of_sale', installed=False)
-        if 'point_of_sale' in modules['uninstalled']:
-            client.install('tcm_client_access','hr','point_of_sale','website_sale')
+        modules = client.modules('tcm_client_access', installed=False)
+        if 'tcm_client_access' in modules['uninstalled']:
+            # client.install('tcm_client_access','hr','point_of_sale','website_sale')
+            client.install('tcm_client_access')
             print('Los modulos seleccionados han sido instalado!')
 
 
