@@ -8,7 +8,7 @@ import erppeek
 
 DBNAME_PATTERN = '^[a-zA-Z0-9][a-zA-Z0-9_.-]+$'
 
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 class TCMPlatformWizard(http.Controller):
     @http.route('/build_client/launch/wizard', type='http', auth="public", website=False, csrf=False)
@@ -30,29 +30,59 @@ class TCMPlatformWizard(http.Controller):
 
     @http.route('/build_client/database/create', type='http', auth="public", website=True, csrf=False)
     def create_database(self, **post):
+
+        # logger.debug("No moment locale for code %s", code)
+        # logger.warning("No email template found for sending email to the portal user")
+
         print('Master password: ', post.get('master_pwd'))
+        _logger.debug('Master password: %s', post.get('master_pwd'))
+
         print('Name: ', post.get('name'))
+        _logger.debug('Name: %s', post.get('name'))
+
         print('Email: ', post.get('login'))
+        _logger.debug('Name: %s', post.get('login'))
+
         print('Password: ', post.get('password'))
+        _logger.debug("Password: %s", post.get('password'))
+
         print('Phone: ', post.get('phone'))
+        _logger.debug("Phone %s", post.get('phone'))
+
         print('Idioma: ', post.get('lang'))
+        _logger.debug("Idioma: %s", post.get('lang'))
+
         print('Pais: ', post.get('country_code'))
+        _logger.debug("Pais: %s", post.get('country_code'))
+
         print('Datos Demos: ', post.get('demo'))
+        _logger.debug("Datos Demos: %s", post.get('demo'))
+
         print('Plan: ', post.get('product'))
+        _logger.debug("Plan: %s", post.get('product'))
+
         print('Metodo de Pago: ', post.get('paymethod'))
+        _logger.debug("Metodo de Pago: %s", post.get('paymethod'))
 
         # IP real del servidor Nginx
         # real_ip_address = request.httprequest.environ['HTTP_X_REAL_IP']
         real_ip_address = request.httprequest.environ.get('HTTP_X_REAL_IP')
         ip_server = None
 
-        if (real_ip_address == None):
-            pool_config = request.env['ir.config_parameter'].search([('key', '=', 'web.base.url')])[0]
-            ip_server = pool_config.value
-            print('IP del servidor: ', ip_server)
-        else:
-            ip_server = real_ip_address
-            print('IP real del servidor: ', ip_server)
+        pool_config = request.env['ir.config_parameter'].search([('key', '=', 'web.base.url')])[0]
+        ip_server = pool_config.value
+        print('IP del servidor: ', ip_server)
+        _logger.info('IP del servidor: %s', ip_server)
+
+        # if (real_ip_address == None):
+        #     pool_config = request.env['ir.config_parameter'].search([('key', '=', 'web.base.url')])[0]
+        #     ip_server = pool_config.value
+        #     print('IP del servidor: ', ip_server)
+        #     _logger.info('IP real del servidor: %s', ip_server)
+        # else:
+        #     ip_server = real_ip_address
+        #     print('IP real del servidor: ', )
+        #     _logger.info('IP real del servidor: %s', ip_server)
 
         ADMIN_PASSWORD = post.get('master_pwd')
         SERVER = ip_server
@@ -70,17 +100,20 @@ class TCMPlatformWizard(http.Controller):
                 # print("La base de datos no existe, creando una!")
                 client.create_database(ADMIN_PASSWORD, DATABASE, DEMO, LANG, USER_PASSWORD, LOGIN, COUNTRY_CODE)
                 status['message'] = 'Instancia de Odoo (" % DATABASE % ") se creó con éxito!!!'
+                _logger.debug("La base de datos se ha creado con exito!")
+
+                # Instalando los modulos necesarios
+                # self.install_odoo_modules(SERVER, DATABASE, LOGIN, USER_PASSWORD)
+                print("Modulos instalados con exito!")
             else:
                 # print("La base de datos " % DATABASE % " ya existe")
                 status['message'] = "La base de datos (" % DATABASE % ") ya existe, por favor seleccione otro nombre."
+                _logger.warning("La base de datos " % DATABASE % " ya existe")
         except Exception as e:
             error = "Database creation error: %s" % (str(e) or repr(e))
             status['message'] = error
+            _logger.exception("Database creation error: %s" % (str(e) or repr(e)))
             # print(error)
-
-        # Instalando los modulos necesarios
-        self.install_odoo_modules(SERVER, DATABASE, LOGIN, USER_PASSWORD)
-        print("Modulos instalados con exito!")
 
         return request.render("tcm_build_client.build_client_wizard_report", status)
         # Finished!
@@ -89,6 +122,7 @@ class TCMPlatformWizard(http.Controller):
         # You can use this client if you have Erppeek installed and have a erppeek.ini file
         # client = erppeek.Client.from_config('ErpPeekDemoDatabase')
         # The alternative is by specifying the settings by command
+        # client = erppeek.Client('http://localhost:8080', 'ErpPeekDemoDatabase', 'admin', 'admin')
         client = erppeek.Client(serverName, database, login, password)
         print('Instalando los modulos...')
         modules = client.modules('tcm_client_access', installed=False)
