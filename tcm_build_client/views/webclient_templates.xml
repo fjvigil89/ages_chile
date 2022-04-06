@@ -8,13 +8,13 @@
             <field name="new_window" eval="True"></field>
         </record>
 
-        <!--<record id="menu_wizard_instance" model="website.menu">
-            <field name="name">Prueba de Instalacion</field>
+        <record id="menu_wizard_instance" model="website.menu">
+            <field name="name">Instalar Cliente</field>
             <field name="url">/build_client/database/test_install</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence" type="int">25</field>
             <field name="new_window" eval="True"></field>
-        </record>-->
+        </record>
 
         <template id="build_client_wizard" name="Generador de instancia cliente TCM">
             <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>

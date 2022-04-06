@@ -103,7 +103,7 @@ class TCMPlatformWizard(http.Controller):
                 _logger.debug("La base de datos se ha creado con exito!")
 
                 # Instalando los modulos necesarios
-                # self.install_odoo_modules(SERVER, DATABASE, LOGIN, USER_PASSWORD)
+                self.install_odoo_modules(SERVER, DATABASE, LOGIN, USER_PASSWORD)
                 print("Modulos instalados con exito!")
             else:
                 # print("La base de datos " % DATABASE % " ya existe")
@@ -157,8 +157,8 @@ class TCMPlatformWizard(http.Controller):
     def wizard_example(self, **d):
         SERVER = 'http://localhost:8069'
         ADMIN_PASSWORD = 'desarrollo'
-        DATABASE = '4444'
-        LOGIN = 'chichomentira@tcm.com'
+        DATABASE = 'db4444'
+        LOGIN = 'admin@tcm.com'
         USER_PASSWORD = 'desarrollo'
         LANG = 'es_CL'
         COUNTRY_CODE = 'cl'

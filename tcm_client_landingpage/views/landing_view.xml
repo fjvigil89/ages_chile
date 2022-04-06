@@ -26,8 +26,8 @@
                 <tree string="Listado de Usuarios TCM" create="true" edit="true" delete="true">
                     <field name="user_id" string="Usuario"
                            options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
-                    <field name="instance" string="Instancia de Odoo"/>
-                    <field name="domain" string="Dominio del servidor"/>
+                    <field name="ip_server" string="IP del Servidor"/>
+                    <field name="protocol" string="Protocolo de Acceso"/>
                     <field name="url_website" string="Url de Acceso"
                            attrs="{'readonly':True}"/>
                     <field name="access_token" readonly="1" string="Token de Acceso"
@@ -52,8 +52,8 @@
                             <field name="user_id" string="Usuario"
                                    options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
                             <field name="password" string="Contraseña" password="True" type="password"/>
-                            <field name="instance" string="Instancia de Odoo"/>
-                            <field name="domain" string="Dominio del servidor"/>
+                            <field name="ip_server" string="IP del Servidor"/>
+                            <field name="protocol" string="Protocolo de Acceso"/>
                             <field name="url_website" string="Url de Acceso"
                                    attrs="{'readonly':True}"/>
                             <field name="access_token" readonly="1" string="Token de Acceso"
