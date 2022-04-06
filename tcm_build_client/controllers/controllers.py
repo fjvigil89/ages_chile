@@ -86,6 +86,7 @@ class TCMPlatformWizard(http.Controller):
 
         ADMIN_PASSWORD = post.get('master_pwd')
         SERVER = ip_server
+        # XSERVER = request.env["ir.config_parameter"].get_param("server")
         DATABASE = post.get('name')
         LOGIN = post.get('login')
         USER_PASSWORD = post.get('password')
@@ -156,6 +157,7 @@ class TCMPlatformWizard(http.Controller):
     @http.route('/build_client/database/test_install', type='http', auth="public", website=True, csrf=False)
     def wizard_example(self, **d):
         SERVER = 'http://155.210.153.12:10012'   #'http://localhost:8069'
+        XSERVER = request.env["ir.config_parameter"].get_param("server")
         ADMIN_PASSWORD = 'desarrollo'
         DATABASE = 'db4444'
         LOGIN = 'admin@tcm.com'
@@ -164,20 +166,22 @@ class TCMPlatformWizard(http.Controller):
         COUNTRY_CODE = 'cl'
         DEMO = False
 
+        _logger.info('SERVER: %s', XSERVER)
+
         status = {}
 
-        client = erppeek.Client(server=SERVER)
-        if not DATABASE in client.db.list():
-            print("La base de datos no existe, creando una!")
-            client.create_database(ADMIN_PASSWORD, DATABASE, DEMO, LANG, USER_PASSWORD, LOGIN, COUNTRY_CODE)
-            status['message'] = 'Instancia de Odoo (" % DATABASE % ") se creó con éxito!!!'
-            print('Usuario: ', client.user)
-        else:
-            print("La base de datos " % DATABASE % " ya existe.")
-            status['message'] = "La base de datos (" % DATABASE % ") ya existe, por favor seleccione otro nombre."
+        # client = erppeek.Client(server=SERVER)
+        # if not DATABASE in client.db.list():
+        #     print("La base de datos no existe, creando una!")
+        #     client.create_database(ADMIN_PASSWORD, DATABASE, DEMO, LANG, USER_PASSWORD, LOGIN, COUNTRY_CODE)
+        #     status['message'] = 'Instancia de Odoo (" % DATABASE % ") se creó con éxito!!!'
+        #     print('Usuario: ', client.user)
+        # else:
+        #     print("La base de datos " % DATABASE % " ya existe.")
+        #     status['message'] = "La base de datos (" % DATABASE % ") ya existe, por favor seleccione otro nombre."
 
         # Instalando los modulos necesarios
-        self.install_odoo_modules()
+        # self.install_odoo_modules()
         print("Modulos instalados con exito!")
 
         ip_address = request.httprequest.environ['REMOTE_ADDR']
@@ -193,5 +197,9 @@ class TCMPlatformWizard(http.Controller):
         else:
             print('IP real del servidor: ', real_ip_address)
 
-        return request.render("tcm_build_client.build_client_wizard_report", status)
+        status['server'] = XSERVER
+        status['ip_server'] = ip_server
+        status['real_ip_address'] = real_ip_address
+
+        return request.render("tcm_build_client.wizard_report", status)
         # Fin de la funcion

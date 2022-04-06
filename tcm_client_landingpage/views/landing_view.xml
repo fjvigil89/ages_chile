@@ -26,11 +26,11 @@
                 <tree string="Listado de Usuarios TCM" create="true" edit="true" delete="true">
                     <field name="user_id" string="Usuario"
                            options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
+                    <field name="instance" string="Instancia de Odoo"/>
                     <field name="ip_server" string="IP del Servidor"/>
                     <field name="protocol" string="Protocolo de Acceso"/>
-                    <field name="url_website" string="Url de Acceso"
-                           attrs="{'readonly':True}"/>
-                    <field name="access_token" readonly="1" string="Token de Acceso"
+                    <field name="url_website" string="Url de Acceso" />
+                    <field name="access_token" readonly="1" invisible="1" string="Token de Acceso"
                            attrs="{'readonly':True, 'invisible': True}"/>
                 </tree>
             </field>
@@ -52,17 +52,20 @@
                             <field name="user_id" string="Usuario"
                                    options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
                             <field name="password" string="Contraseña" password="True" type="password"/>
+                            <field name="instance" string="Instancia de Odoo"/>
                             <field name="ip_server" string="IP del Servidor"/>
                             <field name="protocol" string="Protocolo de Acceso"/>
-                            <field name="url_website" string="Url de Acceso"
-                                   attrs="{'readonly':True}"/>
-                            <field name="access_token" readonly="1" string="Token de Acceso"
-                                   attrs="{'readonly':True, 'invisible': True}"/>
+                            <field name="url_website" string="Url de Acceso"/>
+                            <field name="access_token" string="Token de Acceso"
+                                   attrs="{'invisible': True}"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
+
+
+       <!-- attrs="{'readonly':True}"  -->
 
         <menuitem id="root_menu_clientes_tcm"
                   name="Clientes de TCM"/>

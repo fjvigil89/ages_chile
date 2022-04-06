@@ -12,12 +12,12 @@ class LandingPage(models.Model):
     _description = 'Tabla que contiene los clientes de TCM y del POS'
     # _inherit = 'res.users'
 
-    # instance = fields.Char("Nombre de Instancia Cliente", default='XXXX', required=True)
+    instance = fields.Char("Nombre de Instancia", default='db_cliente', required=True)
     ip_server = fields.Char("IP o Dominio del Servidor", default='127.0.0.1', required=True)
     protocol = fields.Selection([('http', 'Protocolo HTTP'),
                                  ('https', 'Protocolo HTTPS')], string='Protocolo de Acceso',
                                         default='http')
-    url_website = fields.Char("URL de Acceso", compute="_compute_website", store=True)
+    url_website = fields.Char("URL de Acceso", required=True)
     user_id = fields.Many2one('res.users', ondelete='set null', string='Usuario', default=lambda self: self.env.user)
     password = fields.Text(string='Contraseña', default=False, required=True)
     is_logged = fields.Boolean(string='Autenticado?', default=False)
@@ -25,16 +25,19 @@ class LandingPage(models.Model):
 
 
     @api.multi
-    @api.depends('ip_server')
+    @api.depends("ip_server", "protocol")
+    @api.onchange("ip_server", "protocol")
     def _compute_website(self):
+        self.ensure_one()
         if self.ip_server:
-            for record in self:
-                url = ""
-                if record.ip_server:
-                    url = str(record.ip_server).strip()
-                    print('URL: ', url)
-                record.url_website = record.protocol+"://%s" % str(url).strip()
-                print('URL: ', record.url_website)
+            # for record in self:
+            record = self
+            url = ""
+            if record.ip_server:
+                url = str(record.ip_server).strip()
+                print('URL: ', url)
+            record.url_website = record.protocol+"://%s" % str(url).strip()
+            print('URL_website: ', record.url_website)
 
     @api.multi
     def redirect_to_page(self):

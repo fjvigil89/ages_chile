@@ -40,7 +40,7 @@ class TCMLandingPage(http.Controller):
 
         username = row_user.login
         password = user_tcm.password
-        database = 'ejemplo_999' # user_tcm.instance
+        database = user_tcm.instance
 
         domain_url = user_tcm.url_website
         # domain_url = "https://%s.geztion.pro" % user_tcm.instance

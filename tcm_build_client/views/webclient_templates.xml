@@ -696,5 +696,24 @@
             </t>
         </template>
 
+        <template id="wizard_report" name="Result Process">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container mt-5">
+                        <div class="col-md-12">
+                            <div class="alert alert-success">
+                                <h4>Proceso de creación de la instancia de Odoo terminado!</h4>
+                                <br/>
+                                <t t-esc="message"/><br/>
+                                Servidor: <t t-esc="server"/><br/>
+                                IP del Servidor: <t t-esc="ip_server"/><br/>
+                                IP real del servidor:: <t t-esc="real_ip_address"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
     </data>
 </odoo>
