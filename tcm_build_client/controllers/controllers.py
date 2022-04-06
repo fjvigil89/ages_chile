@@ -155,7 +155,7 @@ class TCMPlatformWizard(http.Controller):
 
     @http.route('/build_client/database/test_install', type='http', auth="public", website=True, csrf=False)
     def wizard_example(self, **d):
-        SERVER = 'http://localhost:8069'
+        SERVER = 'http://155.210.153.12:10012'   #'http://localhost:8069'
         ADMIN_PASSWORD = 'desarrollo'
         DATABASE = 'db4444'
         LOGIN = 'admin@tcm.com'
