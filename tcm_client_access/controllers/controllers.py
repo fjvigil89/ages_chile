@@ -13,12 +13,16 @@ import odoo.addons.web.controllers.main
 class TCMClientAccess(http.Controller):
     @http.route('/login_client', type='http', auth='none', methods=['GET'], csrf=False)
     def tcm_login_client(self, login, password, action='mail.action_discuss', db=None, force='', mod_file=None, **kw):
+        print('db: ', db)
+        print('request.db: ', request.db)
+        # print('request: ', request)
         if db and db != request.db:
             raise Exception(_("Could not select database '%s'") % db)
         uid = request.session.authenticate(request.db, login, password)
         if not uid:
             raise SignupError(_('Authentication Failed.'))
-        url = '/web#%s' % url_encode({'action': action})
+        #url = '/web#%s' % url_encode({'action': action})
+        url = '/web#'
 
         return werkzeug.utils.redirect(url)
 

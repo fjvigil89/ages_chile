@@ -27,26 +27,17 @@ class TCMLandingPage(http.Controller):
         pool_users = request.env['res.users']
         row_user = pool_users.search([('id', '=', user_id)])
 
-        readPassword = self.read_password(user_id)
-        userPassword = readPassword[0]
-        # print('Usuario: ', row_user)
-        # print('Password: ', userPassword)  # str(list(tuple))
-
         user_tcm = request.env['tcm.client.landingpage'].search([('user_id.id', '=', user_id)])[0]
-        # print('User Id: ', user_tcm.user_id)
-        # print('Password UserId: ', user_tcm.password)
-        # print('Instancia: ', user_tcm.instance)
-        # print('Sitio Web Patrón: ', user_tcm.url_website)
+        print('User Id: ', user_tcm.user_id)
+        print('Password UserId: ', user_tcm.password)
+        print('Instancia: ', user_tcm.instance)
+        print('Sitio Web Patrón: ', user_tcm.url_website)
 
         username = row_user.login
         password = user_tcm.password
         database = user_tcm.instance
 
         domain_url = user_tcm.url_website
-        # domain_url = "https://%s.geztion.pro" % user_tcm.instance
-        # domain_url = 'http://192.168.56.101:8069'
-
-        # http://192.168.56.101:8069/login_odoo?db=prueba&login=jramonholy@gmail.com&password=desarrollo&action=mail.action_discuss
 
         action='mail.action_discuss'
         url = domain_url + '/login_client?db='+database+'&login='+username+'&password='+password+'&action='+action
@@ -61,22 +52,12 @@ class TCMLandingPage(http.Controller):
         pool_users = request.env['res.users']
         row_user = pool_users.search([('id', '=', user_id)])
 
-        userPassword = self.read_password(user_id)
-        # print('Usuario: ', row_user)
-        # print('Password: ', userPassword)
-
         user_tcm = request.env['tcm.client.landingpage'].search([('user_id.id', '=', user_id)])[0]
-        # print('User Id: ', user_tcm.user_id)
-        # print('Password UserId: ', user_tcm.password)
-        # print('Instancia: ', user_tcm.instance)
-        # print('Sitio Web Patrón: ', user_tcm.url_website)
 
         username = row_user.login
         password = user_tcm.password
         database = user_tcm.instance
 
-        # domain_url = "https://%s.geztion.pro" % user_tcm.instance
-        # domain_url = 'http://192.168.56.101:8069'
         domain_url = user_tcm.url_website
 
         # https://9999.geztion.pro/pos/web/#action=pos.ui

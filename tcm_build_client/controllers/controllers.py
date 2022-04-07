@@ -35,34 +35,15 @@ class TCMPlatformWizard(http.Controller):
         # logger.warning("No email template found for sending email to the portal user")
 
         print('Master password: ', post.get('master_pwd'))
-        _logger.debug('Master password: %s', post.get('master_pwd'))
-
         print('Name: ', post.get('name'))
-        _logger.debug('Name: %s', post.get('name'))
-
         print('Email: ', post.get('login'))
-        _logger.debug('Name: %s', post.get('login'))
-
         print('Password: ', post.get('password'))
-        _logger.debug("Password: %s", post.get('password'))
-
         print('Phone: ', post.get('phone'))
-        _logger.debug("Phone %s", post.get('phone'))
-
         print('Idioma: ', post.get('lang'))
-        _logger.debug("Idioma: %s", post.get('lang'))
-
         print('Pais: ', post.get('country_code'))
-        _logger.debug("Pais: %s", post.get('country_code'))
-
         print('Datos Demos: ', post.get('demo'))
-        _logger.debug("Datos Demos: %s", post.get('demo'))
-
         print('Plan: ', post.get('product'))
-        _logger.debug("Plan: %s", post.get('product'))
-
         print('Metodo de Pago: ', post.get('paymethod'))
-        _logger.debug("Metodo de Pago: %s", post.get('paymethod'))
 
         # IP real del servidor Nginx
         # real_ip_address = request.httprequest.environ['HTTP_X_REAL_IP']
@@ -72,7 +53,6 @@ class TCMPlatformWizard(http.Controller):
         pool_config = request.env['ir.config_parameter'].search([('key', '=', 'web.base.url')])[0]
         ip_server = pool_config.value
         print('IP del servidor: ', ip_server)
-        _logger.info('IP del servidor: %s', ip_server)
 
         # if (real_ip_address == None):
         #     pool_config = request.env['ir.config_parameter'].search([('key', '=', 'web.base.url')])[0]
@@ -100,7 +80,7 @@ class TCMPlatformWizard(http.Controller):
             if not DATABASE in client.db.list():
                 # print("La base de datos no existe, creando una!")
                 client.create_database(ADMIN_PASSWORD, DATABASE, DEMO, LANG, USER_PASSWORD, LOGIN, COUNTRY_CODE)
-                status['message'] = 'Instancia de Odoo (" % DATABASE % ") se creó con éxito!!!'
+                status['message'] = 'Instancia de Odoo (" + DATABASE + ") se creó con éxito!!!'
                 _logger.debug("La base de datos se ha creado con exito!")
 
                 # Instalando los modulos necesarios
@@ -108,8 +88,8 @@ class TCMPlatformWizard(http.Controller):
                 print("Modulos instalados con exito!")
             else:
                 # print("La base de datos " % DATABASE % " ya existe")
-                status['message'] = "La base de datos (" % DATABASE % ") ya existe, por favor seleccione otro nombre."
-                _logger.warning("La base de datos " % DATABASE % " ya existe")
+                status['message'] = "La base de datos (" + DATABASE + ") ya existe, por favor seleccione otro nombre."
+                _logger.warning("La base de datos " + DATABASE + " ya existe")
         except Exception as e:
             error = "Database creation error: %s" % (str(e) or repr(e))
             status['message'] = error
