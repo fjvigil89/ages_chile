@@ -80,7 +80,7 @@ class TCMPlatformWizard(http.Controller):
             if not DATABASE in client.db.list():
                 # print("La base de datos no existe, creando una!")
                 client.create_database(ADMIN_PASSWORD, DATABASE, DEMO, LANG, USER_PASSWORD, LOGIN, COUNTRY_CODE)
-                status['message'] = 'Instancia de Odoo (" + DATABASE + ") se creó con éxito!!!'
+                status['message'] = 'Instancia de Odoo (' + DATABASE + ') se creó con éxito!!!'
                 _logger.debug("La base de datos se ha creado con exito!")
 
                 # Instalando los modulos necesarios
