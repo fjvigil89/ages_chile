@@ -559,6 +559,26 @@
                         <div class="row setup-content" id="step-4">
                             <div class="col-12">
                                 <div class="col-md-12">
+                                    <h3>Resúmen del Servicio Contratado</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div id="planBasico" class="col-md-4 col-lg-4 col-sm-4">
+                                        </div>
+                                        <div id="planAdicional" class="col-md-4 col-lg-4 col-sm-4">
+                                        </div>
+                                        <div id="totales" class="col-md-4 col-lg-4 col-sm-4">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
+                                    <button class="btn btn-primary prevBtn float-right" type="button"
+                                            style="margin-right:5px;">Anterior
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row setup-content" id="step-5">
+                            <div class="col-12">
+                                <div class="col-md-12">
                                     <h3>Medio de Pago</h3>
                                     <hr/>
                                     <div class="container container-fluid">
@@ -642,18 +662,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary nextBtn float-right" type="button">Siguiente</button>
-                                    <button class="btn btn-primary prevBtn float-right" type="button"
-                                            style="margin-right:5px;">Anterior
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row setup-content" id="step-5">
-                            <div class="col-12">
-                                <div class="col-md-12">
-                                    <h3>Resúmen del Servicio</h3>
-                                    <hr/>
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <button class="btn btn-success float-right" type="submit">
                                         Terminar!
@@ -669,6 +677,7 @@
             </section>
             <script src="/web/static/lib/jquery/jquery.js" type="text/javascript"></script>
             <script src="/tcm_build_client/static/src/js/wizard.js"></script>
+            <script src="/tcm_build_client/static/src/js/summary.js"></script>
             <script type="text/javascript">
                 $(function() {
                     // Little eye
